@@ -2,7 +2,6 @@ package sample.sina;
 
 import android.net.Uri;
 import android.text.Html;
-import android.text.Spannable;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,13 +18,10 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import org.ayo.http.R;
 import org.ayo.http.callback.BaseHttpCallback;
 import org.ayo.http.callback.model.ResponseModel;
-import org.ayo.utils.HttpProblem;
+import org.ayo.http.utils.HttpProblem;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import sample.App;
 import sample.BaseFragment;

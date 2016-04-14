@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AyoHttp0413.iml" filepath="$PROJECT_DIR$/AyoHttp0413.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AyoHttpWeiboDemo.iml" filepath="$PROJECT_DIR$/AyoHttpWeiboDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ayohttp/ayohttp.iml" filepath="$PROJECT_DIR$/ayohttp/ayohttp.iml" />
       <module fileurl="file://$PROJECT_DIR$/weibosdk/weibosdk.iml" filepath="$PROJECT_DIR$/weibosdk/weibosdk.iml" />
     </modules>
   </component>

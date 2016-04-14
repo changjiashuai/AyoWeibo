@@ -15,7 +15,7 @@ import android.widget.Toast;
 import org.ayo.http.R;
 import org.ayo.http.callback.BaseHttpCallback;
 import org.ayo.http.callback.model.ResponseModel;
-import org.ayo.utils.HttpProblem;
+import org.ayo.http.utils.HttpProblem;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,7 +3,7 @@ package sample.http;
 import org.ayo.http.AyoRequest;
 import org.ayo.http.callback.BaseHttpCallback;
 import org.ayo.http.callback.JsonResponseDispatcher;
-import org.ayo.http.worker.HttpWorkerUseXUtils;
+import org.ayo.http.worker.HttpWorkerUseOkhttp;
 
 import java.util.List;
 
@@ -22,8 +22,8 @@ public class Httpper {
                 .header("version", "1.0.0")   // 可选
                 .myResponseClass(MyResponseMode.class)  //必须，且理论上应该项目唯一
                 //.worker(new HttpWorkerUseXUtils(true)); //必须
-                //.worker(new HttpWorkerUseOkhttp()); //必须
-                .worker(new HttpWorkerUseXUtils()); //必须
+                .worker(new HttpWorkerUseOkhttp()); //必须
+                //.worker(new HttpWorkerUseXUtils()); //必须
         return r;
     }
 

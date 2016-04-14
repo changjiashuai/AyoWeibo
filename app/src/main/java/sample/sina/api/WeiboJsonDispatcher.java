@@ -2,7 +2,7 @@ package sample.sina.api;
 
 import org.ayo.http.callback.JsonResponseDispatcher;
 import org.ayo.http.callback.model.ResponseModel;
-import org.ayo.json.JsonUtils;
+import org.ayo.http.json.JsonUtils;
 
 /**
  * Created by Administrator on 2016/4/13.
