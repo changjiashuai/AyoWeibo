@@ -7,7 +7,7 @@ import org.ayo.http.json.JsonUtils;
 /**
  * Created by Administrator on 2016/4/13.
  */
-public class WeiboJsonDispatcher extends JsonResponseDispatcher {
+public class WeiboJsonDispatcher<T> extends JsonResponseDispatcher {
     /**
      * @param elementClass
      */
