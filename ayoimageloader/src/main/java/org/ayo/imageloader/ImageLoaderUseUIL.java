@@ -211,14 +211,15 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 				throw new IllegalArgumentException("非法本地图片路径：" + uri);
 			}
 
-
+			DisplayImageOptions.Builder db = getDisplayImageOptionsBuilder();
 			if(VanGogh.isValidResourceId(placeHolderLoading)){
-				optionsBuilder.showImageOnLoading(placeHolderLoading);
+				db.showImageOnLoading(placeHolderLoading);
 			}
 
 			if(VanGogh.isValidResourceId(placeHolderFail)){
-				optionsBuilder.showImageOnFail(placeHolderFail);
+				db.showImageOnFail(placeHolderFail);
 			}
+
 			optionsBuilder.build();
 
 			ImageLoader.getInstance().displayImage(url, iv, options, new MyImageLoadingListener(callback), new MyImageLoadingProgressListener(callback));

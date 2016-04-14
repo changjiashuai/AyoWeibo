@@ -40,13 +40,10 @@ public class VanGogh {
 
 	private static int BIG_LOADING = 0;
 	private static int BIG_ERROR = 0;
-	private static int BIG_EMPTY = 0;
 	private static int MIDDLE_LOADING = 0;
 	private static int MIDDLE_ERROR = 0;
-	private static int MIDDLE_EMPTY = 0;
 	private static int SMALL_LOADING = 0;
 	private static int SMALL_ERROR = 0;
-	private static int SMALL_EMPTY = 0;
 
 	public static Context context;
 	private static AyoImageLoader imageLoader;
@@ -63,68 +60,65 @@ public class VanGogh {
 	/**
 	 * init the replace image for big image
 	 */
-	public static void initImageBig(int loading, int error, int empty){
+	public static void initImageBig(int loading, int error){
 		BIG_LOADING = loading;
 		BIG_ERROR = error;
-		BIG_EMPTY = empty;
 	}
 
 	/**
 	 * init the replace image for middle image
 	 */
-	public static void initImageMiddle(int loading, int error, int empty){
+	public static void initImageMiddle(int loading, int error){
 		MIDDLE_LOADING = loading;
 		MIDDLE_ERROR = error;
-		MIDDLE_EMPTY = empty;
 	}
 
 	/**
 	 * init the replace image for small image
 	 */
-	public static void initImageSmall(int loading, int error, int empty){
+	public static void initImageSmall(int loading, int error){
 		SMALL_LOADING = loading;
 		SMALL_ERROR = error;
-		SMALL_EMPTY = empty;
 	}
 
 	/**
 	 * init the replace image for big image
 	 */
 	public static void initImageBig(int img){
-		initImageBig(img, img, img);
+		initImageBig(img, img);
 	}
 
 	/**
 	 * init the replace image for middle image
 	 */
 	public static void initImageMiddle(int img){
-		initImageMiddle(img, img, img);
+		initImageMiddle(img, img);
 	}
 
 	/**
 	 * init the replace image for small image
 	 */
 	public static void initImageSmall(int img){
-		initImageSmall(img, img, img);
+		initImageSmall(img, img);
 	}
 
+
+
 	ImageView iv;
+	private int placeHolderLoading;
+	private int placeHolderFail;
+
 	private VanGogh(ImageView iv){
 		this.iv = iv;
 	}
 
 	public VanGogh imageLoading(int resId){
-		b.showImageOnLoading(resId);
+		placeHolderLoading = resId;
 		return this;
 	}
 
 	public VanGogh imageError(int resId){
-		b.showImageOnFail(resId);
-		return this;
-	}
-
-	public VanGogh imageEmpty(int resId){
-		b.showImageForEmptyUri(resId);
+		placeHolderFail = resId;
 		return this;
 	}
 
@@ -132,57 +126,46 @@ public class VanGogh {
 		return new VanGogh(iv);
 	}
 
-	public void paint(String url, ImageLoadingListener listener, ImageLoadingProgressListener progressListener){
+	public void paint(String uri, String localThumbUri, ImageLoaderCallback callback){
 
-		options = b.cacheInMemory(true)
-				.cacheOnDisk(true)
-				.considerExifParams(true)
-				.displayer(new FadeInBitmapDisplayer(1500))
-				.build();
+		if(isValidUri(uri)){
+			if(isHttpUrl(uri)){
+				String cachePath = imageLoader.getCachePath(uri);
+				if(cachePath != null && !cachePath.equals("")){
+					File cache = new File(cachePath);
+					if(cache.exists()){
+						paint(getUri(cachePath), null, callback);
+						return;
+					}
+				}
+			}
 
-		if(iv == null || b == null){
-			//throw new RuntimeException("Illegal Url");
+			imageLoader.showImage(iv, uri, localThumbUri, placeHolderLoading, placeHolderFail, callback);
+
+		}else{
+
 		}
-
-		if(url == null || url.equals("")){
-			//throw new RuntimeException("Url is null);
-			return;
-		}
-
-		if(isNotLocalPathOrRemotePath(url)){
-			//throw new RuntimeException("Url is either local path nor remote url, cannot load image：" + url);
-			return;
-		}
-
-		if(isLocalPath(url)){
-			url = Uri.fromFile(new File(url)).toString();
-			url = URLDecoder.decode(url);  /// Uri.fromFile would encdoe the chinese charators in url, should be decoded back
-		}
-		ImageLoader.getInstance().displayImage(url, iv, options, listener, progressListener);
 	}
 
-	public void paintBigImage(String url, ImageLoadingListener listener){
+	public void paintBigImage(String url, String localThumbUri, ImageLoaderCallback callback){
 
-		this.imageEmpty(BIG_EMPTY)
-				.imageError(BIG_ERROR)
+		this.imageError(BIG_ERROR)
 				.imageLoading(BIG_LOADING)
-				.paint(url, listener, null);
+				.paint(url, localThumbUri, callback);
 	}
 
-	public void paintMiddleImage(String url, ImageLoadingListener listener){
+	public void paintMiddleImage(String url, String localThumbUri, ImageLoaderCallback callback){
 
-		this.imageEmpty(MIDDLE_EMPTY)
-				.imageError(MIDDLE_ERROR)
+		this.imageError(MIDDLE_ERROR)
 				.imageLoading(MIDDLE_LOADING)
-				.paint(url, listener,null);
+				.paint(url, localThumbUri, callback);
 	}
 
-	public void paintSmallImage(String url, ImageLoadingListener listener){
+	public void paintSmallImage(String url, String localThumbUri, ImageLoaderCallback callback){
 
-		this.imageEmpty(SMALL_EMPTY)
-				.imageError(SMALL_ERROR)
+		this.imageError(SMALL_ERROR)
 				.imageLoading(SMALL_LOADING)
-				.paint(url, listener,null);
+				.paint(url, localThumbUri, callback);
 	}
 
 
