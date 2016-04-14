@@ -1,12 +1,12 @@
 # AyoHttpWeiboDemo
-AyoHttp框架的demo，本意是提供一套顶层框架，用来任意配置底层实现，如okhttp，URLConnection，volly等，但
-对外提供统一的接口
-----------------------
+AyoHttp框架的demo，本意是提供一套顶层框架，用来任意配置底层实现，如okhttp，URLConnection，volly等，
+但现在各方面还都不够完善，demo也不够完善
+
 
 ##########
-* 接口提供者：
+* 用来测试的接口提供者：
     * 微博：http://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI
-    * 天狗云：
+    * 天狗云美女接口：http://www.tngou.net/doc/gallery
     * 聚合数据：https://www.juhe.cn/docs
 
 
