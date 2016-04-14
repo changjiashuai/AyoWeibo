@@ -23,6 +23,11 @@ AyoHttp框架的demo，本意是提供一套顶层框架，用来任意配置底
     * 重发机制，主要是volly（有还是没有）
     * 对put，head，delete等的支持
 
+#########
+* 注意：
+    * 要想看微博相关接口，必须使用weibosdk/doc/debug.keystore来打调试包，你得把C:/Users/xx/.android/debug.keystore换成这个
+    * 要想看微博相关接口，先通过微博授权，就是主页第二个按钮，用微博登录一下，这就是为什么要替换dubug.keystore，这其实是微博官方demo的keystore
+
 ###1 怎么用
 
 ####第1步 定义顶层json业务对象
