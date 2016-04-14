@@ -1,1 +1,1 @@
-include ':app', ':weibosdk', ':ayohttp'
+include ':app', ':weibosdk', ':ayohttp', ':ayosdk', ':eventbus', ':ayoimageloader'
