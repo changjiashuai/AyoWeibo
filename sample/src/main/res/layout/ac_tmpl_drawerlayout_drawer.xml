@@ -1,0 +1,22 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_drawer_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="滤镜模式选择"
+        />
+
+    <Button
+        android:id="@+id/btn_drawer_enbale"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_drawer_switch"
+        android:layout_centerInParent="true"
+        android:text="Xfermode模式选择"
+        />
+
+</RelativeLayout>

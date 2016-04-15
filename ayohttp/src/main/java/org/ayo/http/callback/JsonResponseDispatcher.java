@@ -5,7 +5,7 @@ import android.util.Log;
 import org.ayo.http.callback.model.FailRespnseModel;
 import org.ayo.http.callback.model.ResponseModel;
 import org.ayo.http.AyoResponse;
-import org.ayo.http.json.JsonUtils;
+import org.ayo.http.json.JsonParser;
 import org.ayo.http.utils.HttpPrinter;
 import org.ayo.http.utils.HttpProblem;
 
@@ -22,12 +22,18 @@ public class JsonResponseDispatcher<T> extends BaseResponseDispatcher {
 	//BaseHttpCallback<T> callback;
 	//UniversalHttpResponse resp;
 	Class<?> elementClass;
+	private JsonParser jsonParser;
+
+	public JsonParser getJsonParser(){
+		return jsonParser;
+	}
 	
 	/**
 	 * @param elementClass
 	 */
-	public JsonResponseDispatcher(Class<?> elementClass){
+	public JsonResponseDispatcher(Class<?> elementClass, JsonParser jsonParser){
 		this.elementClass = elementClass;
+		this.jsonParser = jsonParser;
 	}
 	
 	/**
@@ -100,10 +106,10 @@ public class JsonResponseDispatcher<T> extends BaseResponseDispatcher {
 				}else{
 					if(isArrayJson(json)){
 						//try to parse ["aaa","dddd","eee"] to List<String>
-						callback.onFinish(true, HttpProblem.OK, rm, (T) JsonUtils.getBeanList(json, c));
+						callback.onFinish(true, HttpProblem.OK, rm, (T) jsonParser.getBeanList(json, c));
 					}else{
 						//Log.e("ddd", json);
-						callback.onFinish(true, HttpProblem.OK, rm, (T)JsonUtils.getBean(json, c));
+						callback.onFinish(true, HttpProblem.OK, rm, (T)jsonParser.getBean(json, c));
 					}
 				}
 				
@@ -126,7 +132,7 @@ public class JsonResponseDispatcher<T> extends BaseResponseDispatcher {
 
 	@Override
 	public ResponseModel parseResponseToModel(String response, Class<? extends ResponseModel> clazz) {
-		ResponseModel rm = (ResponseModel) JsonUtils.getBean(response, clazz);
+		ResponseModel rm = (ResponseModel) jsonParser.getBean(response, clazz);
 		return rm;
 	}
 	

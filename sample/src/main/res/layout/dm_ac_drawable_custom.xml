@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#94d8b6"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--RoundImageDrawable--"
+            android:textColor="#e60012"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_common_btn_strike"
+            android:id="@+id/iv_1"
+            />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:id="@+id/iv_2"
+            />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/iv_3"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--CircleImageDrawable--"
+            android:textColor="#e60012"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_common_btn_strike"
+            android:id="@+id/iv_4"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--自定义State--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.MessageListItemView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mli_item"
+            />
+        <CheckBox
+            android:id="@+id/cb_change_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:button="@drawable/sel_checkbox_common_bg"
+            android:checked="true"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="设为已读"
+            android:textColor="#aaffffff"
+            android:textSize="16sp" />
+        <!--  over -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e60012"
+            android:layout_marginBottom="10dp"
+            />
+    </LinearLayout>
+
+</ScrollView>

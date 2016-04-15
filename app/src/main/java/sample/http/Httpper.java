@@ -36,7 +36,7 @@ public class Httpper {
         Httpper.request().flag(flag)
                 .url("http://www.tngou.net/tnfs/api/classify")
                 .method("get")
-                .go(new JsonResponseDispatcher<List<GalleryClass>>(GalleryClass.class), callback);
+                .go(new JsonResponseDispatcher<List<GalleryClass>>(GalleryClass.class, new FastJsonParser()), callback);
     }
 
 
@@ -54,6 +54,6 @@ public class Httpper {
                 .param("page", pageNow + "")
                 .param("rows", "20")
                 .param("id", classId)
-                .go(new JsonResponseDispatcher<List<Gallery>>(Gallery.class), callback);
+                .go(new JsonResponseDispatcher<List<Gallery>>(Gallery.class, new FastJsonParser()), callback);
     }
 }

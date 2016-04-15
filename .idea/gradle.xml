@@ -11,10 +11,15 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ayodatabase" />
             <option value="$PROJECT_DIR$/ayohttp" />
             <option value="$PROJECT_DIR$/ayoimageloader" />
             <option value="$PROJECT_DIR$/ayosdk" />
+            <option value="$PROJECT_DIR$/ayoview" />
             <option value="$PROJECT_DIR$/eventbus" />
+            <option value="$PROJECT_DIR$/mediachooser" />
+            <option value="$PROJECT_DIR$/sample" />
+            <option value="$PROJECT_DIR$/umeng" />
             <option value="$PROJECT_DIR$/weibosdk" />
           </set>
         </option>

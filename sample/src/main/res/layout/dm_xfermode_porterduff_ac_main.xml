@@ -1,0 +1,102 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--PorterDuffView: 两个渐变色的颜色值在不同的混合模式下--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.xfermode.PorterDuffView
+            android:id="@+id/view_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--CustomView--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.xfermode.CustomView
+            android:id="@+id/view_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--橡皮擦--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.xfermode.EraserView
+            android:id="@+id/view_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--DisInView--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.xfermode.DisInView
+            android:id="@+id/view_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--DisOutView--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.xfermode.DisOutView
+            android:id="@+id/view_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/sel_common_btn_strike"
+            android:gravity="center"
+            android:text="--ScreenView--"
+            android:textColor="#e60012"
+            />
+        <com.ayoview.sample.deepmind.xfermode.ScreenView
+            android:id="@+id/view_6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:text="换一个" />
+
+    </LinearLayout>
+</ScrollView>

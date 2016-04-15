@@ -1,0 +1,74 @@
+前提：manefest声明
+<!-- 友盟配置开始 -->
+<meta-data
+    android:name="UMENG_APPKEY"
+    android:value="你的appkey" />
+<meta-data
+    android:name="UMENG_CHANNEL"
+    android:value="000000" />
+
+<!-- 自动更新 -->
+<service
+    android:name="com.umeng.update.net.DownloadingService"
+    android:process=":DownloadingService" >
+</service>
+
+<activity
+    android:name="com.umeng.update.UpdateDialogActivity"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+</activity>
+
+<!-- 用户反馈 -->
+<activity android:name="com.umeng.fb.ConversationActivity" />
+<activity android:name="com.umeng.fb.ContactActivity" />
+<activity
+    android:name="com.iwomedia.statictis.FeedbackActivity"
+    android:configChanges="orientation|keyboardHidden|navigation"
+    android:screenOrientation="portrait"
+    android:theme="@style/Theme.NoShadow.NoTitle" />
+<!-- 友盟配置结束 -->
+
+一、反馈的使用
+
+ 调用：FeedbackActivity.start();
+
+ 
+二、自动更新：
+
+//执行友盟自动更新检测
+UmengUpdateAgent.setUpdateOnlyWifi(false);
+UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+    @Override
+    public void onUpdateReturned(int updateStatus,UpdateResponse updateInfo) {
+        switch (updateStatus) {
+        case UpdateStatus.Yes: // has update
+            UmengUpdateAgent.showUpdateDialog(MainListActivity.this, updateInfo);
+            App.setIfNeedUpdate(true);
+            break;
+        case UpdateStatus.No: // has no update
+        	App.setIfNeedUpdate(false);
+            break;
+        case UpdateStatus.NoneWifi: // none wifi
+            break;
+        case UpdateStatus.Timeout: // time out
+            break;
+        }
+    }
+});
+UmengUpdateAgent.update(this);
+
+
+3、统计：
+
+在Activity基类中：
+@Override
+protected void onPause() {
+	super.onPause();
+	StatisticsUtils.onPause(this);
+}
+
+@Override
+protected void onResume() {
+	super.onResume();
+	StatisticsUtils.onResume(this);
+}

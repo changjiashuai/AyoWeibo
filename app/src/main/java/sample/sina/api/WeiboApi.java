@@ -4,11 +4,10 @@ import com.sina.weibo.sdk.demo.AccessTokenKeeper;
 
 import org.ayo.http.AyoRequest;
 import org.ayo.http.callback.BaseHttpCallback;
-import org.ayo.http.callback.JsonResponseDispatcher;
 import org.ayo.http.worker.HttpWorkerUseOkhttp;
 
 import sample.App;
-import sample.http.Httpper;
+import sample.http.FastJsonParser;
 import sample.sina.model.ResponseTimeline;
 
 /**
@@ -48,7 +47,7 @@ public class WeiboApi {
                 .param("count", "50")
                 .param("page", "1")
                 .param("base_app", "0")
-                .go(new WeiboJsonDispatcher(ResponseTimeline.class), callback);
+                .go(new WeiboJsonDispatcher(ResponseTimeline.class, new FastJsonParser()), callback);
     }
 
 }
