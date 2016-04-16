@@ -110,6 +110,7 @@ public class VanGogh {
 
 	public void paint(String uri, String localThumbUri, ImageLoaderCallback callback){
 
+		//本地有缓存，直接加载缓存
 		if(isValidUri(uri)){
 			if(isHttpUrl(uri)){
 				String cachePath = imageLoader.getCachePath(uri);
@@ -122,6 +123,7 @@ public class VanGogh {
 				}
 			}
 
+			//否则才联网下载
 			imageLoader.showImage(iv, uri, localThumbUri, placeHolderLoading, placeHolderFail, callback);
 
 		}else{
@@ -225,6 +227,18 @@ public class VanGogh {
 			return s;
 		}else{
 			return null;
+		}
+	}
+
+	public static Uri toUri(String uri){
+		if(uri == null || uri.equals("")){
+			return null;
+		}else{
+			if(isLocalPath(uri)){
+				String s = Uri.fromFile(new File(uri)).toString();
+				uri = s;
+			}
+			return Uri.parse(uri);
 		}
 	}
 

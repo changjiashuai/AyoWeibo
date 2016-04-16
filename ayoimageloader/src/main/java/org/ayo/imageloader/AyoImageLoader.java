@@ -1,6 +1,6 @@
 package org.ayo.imageloader;
 
-import android.widget.ImageView;
+import android.view.View;
 
 
 /**
@@ -17,7 +17,7 @@ public interface AyoImageLoader {
      * @param placeHolderFail 如果缩略图无效，即为空或者为null，则使用这个图作为fail占位图
      * @param callback
      */
-    void showImage(ImageView iv, String uri, String thumbUri, int placeHolderLoading, int placeHolderFail, ImageLoaderCallback callback);
+    void showImage(View iv, String uri, String thumbUri, int placeHolderLoading, int placeHolderFail, ImageLoaderCallback callback);
 
     /**
      * 显示res下的图片
@@ -25,7 +25,7 @@ public interface AyoImageLoader {
      * @param resId
      * @param callback
      */
-    void showImage(ImageView iv, int resId, ImageLoaderCallback callback);
+    void showImage(View iv, int resId, ImageLoaderCallback callback);
 
 
     /**

@@ -3,9 +3,6 @@ package org.ayo.imageloader;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Matrix;
-import android.media.ExifInterface;
-import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -24,8 +21,6 @@ import com.nostra13.universalimageloader.utils.DiskCacheUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URLDecoder;
 
 
 /**
@@ -193,7 +188,11 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 	}
 
 	@Override
-	public void showImage(ImageView iv, String uri, String thumbUri, int placeHolderLoading, int placeHolderFail, ImageLoaderCallback callback) {
+	public void showImage(View iv, String uri, String thumbUri, int placeHolderLoading, int placeHolderFail, ImageLoaderCallback callback) {
+
+		if(!(iv instanceof ImageView)){
+			throw new RuntimeException("参数1必须是ImageView");
+		}
 
 		if(VanGogh.isValidUri(thumbUri)){
 			//先加载先行缩略图，并且不用等待结束
@@ -222,7 +221,7 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 
 			optionsBuilder.build();
 
-			ImageLoader.getInstance().displayImage(url, iv, options, new MyImageLoadingListener(callback), new MyImageLoadingProgressListener(callback));
+			ImageLoader.getInstance().displayImage(url, (ImageView)iv, options, new MyImageLoadingListener(callback), new MyImageLoadingProgressListener(callback));
 		}else{
 			throw new IllegalArgumentException("非法图片路径：" + uri);
 		}
@@ -230,10 +229,13 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 	}
 
 	@Override
-	public void showImage(ImageView iv, int resId, ImageLoaderCallback callback) {
+	public void showImage(View iv, int resId, ImageLoaderCallback callback) {
+		if(!(iv instanceof ImageView)){
+			throw new RuntimeException("参数1必须是ImageView");
+		}
 		DisplayImageOptions.Builder optionsBuilder = new DisplayImageOptions.Builder();
 		String uri = "drawable://" + resId;
-		ImageLoader.getInstance().displayImage(uri, iv, optionsBuilder.build(), null, null);
+		ImageLoader.getInstance().displayImage(uri, (ImageView)iv, optionsBuilder.build(), null, null);
 	}
 
 	class MyImageLoadingListener implements ImageLoadingListener{
