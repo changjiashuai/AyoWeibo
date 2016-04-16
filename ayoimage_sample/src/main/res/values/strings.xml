@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ayoimage_sample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="view_pager">ViewPager</string>
+</resources>

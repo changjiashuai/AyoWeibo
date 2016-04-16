@@ -1,1 +1,1 @@
-include ':app', ':weibosdk', ':ayohttp', ':ayosdk', ':eventbus', ':ayoimageloader', ':ayoview', ':sample', ':ayodatabase', ':umeng', ':mediachooser'
+include ':app', ':weibosdk', ':ayohttp', ':ayosdk', ':eventbus', ':ayoimageloader', ':ayoview', ':sample', ':ayodatabase', ':umeng', ':mediachooser', ':ayoimage_sample'
