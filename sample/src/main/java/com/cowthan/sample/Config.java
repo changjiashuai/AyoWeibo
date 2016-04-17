@@ -17,6 +17,7 @@ import com.ayo.sample.zsdk.ToolkitSampleActivity;
 import com.ayoview.notifysample.DialogDemoActivity;
 import com.ayoview.sample.deepmind.DemoCustomMenuActivity;
 import com.ayoview.sample.drawable.DemoDrawableActivity;
+import com.ayoview.sample.tmpl_pagegroup.DemoMainActivity;
 import com.ayoview.sample.tmpl_recyclerview.DemoRecyclerActivity;
 import com.ayoview.sample.zbutton.ButtonDemoActivity;
 import com.ayoview.sample.zsimplepromt.SvProgressHudDemoActivity;
@@ -26,9 +27,6 @@ import com.cowthan.sample.menu.Leaf;
 import com.cowthan.sample.menu.Menu;
 import com.cowthan.sample.menu.MenuItem;
 import com.example.administrator.myapplication.Particle2MainActivity;
-import com.snowy.demo.zanimation.AnimationDemoActivity;
-import com.snowy.demo.zfragment.FragmentDemoActivity;
-import com.snowy.demo.zviewpager.ViewPagerDemoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,6 +130,7 @@ public class Config{
             MenuItem menuItem5 = new MenuItem("模板库", R.drawable.weixin_normal, R.drawable.weixin_pressed);
             m1.addMenuItem(menuItem5);
             {
+                menuItem5.addLeaf(new Leaf("页面主框架", "", DemoMainActivity.class));
                 menuItem5.addLeaf(new Leaf("Activity和Fragment基类", "", null));
                 menuItem5.addLeaf(new Leaf("ListView和GridView模板", "", TmplListActivity.class));
                 menuItem5.addLeaf(new Leaf("RecyclerView模板", "", DemoRecyclerActivity.class));
@@ -142,28 +141,6 @@ public class Config{
 
 
         ///--------------------------菜单1：笔记
-        Menu m2 = new Menu("笔记", R.drawable.contact_list_normal, R.drawable.contact_list_pressed);
-        menus.add(m2);
-        {
-            MenuItem menuItem = new MenuItem("snowy", R.drawable.weixin_normal, R.drawable.weixin_pressed);
-            m2.addMenuItem(menuItem);
-            {
-                menuItem.addLeaf(new Leaf("ViewPager", "", ViewPagerDemoActivity.class));
-                menuItem.addLeaf(new Leaf("Fragment", "", FragmentDemoActivity.class));
-                menuItem.addLeaf(new Leaf("Animation", "", AnimationDemoActivity.class));
-                menuItem.addLeaf(new Leaf("控件", "", null));
-                menuItem.addLeaf(new Leaf("http", "", null));
-                menuItem.addLeaf(new Leaf("数据库", "", null));
-            }
-
-            menuItem = new MenuItem("seven", R.drawable.weixin_normal, R.drawable.weixin_pressed);
-            m2.addMenuItem(menuItem);
-            {
-                menuItem.addLeaf(new Leaf("控件", "", null));
-                menuItem.addLeaf(new Leaf("http", "", null));
-                menuItem.addLeaf(new Leaf("数据库", "", null));
-            }
-        }
 
         ///--------------------------菜单1：开源
         Menu m3 = new Menu("开源", R.drawable.find_normal, R.drawable.find_pressed);

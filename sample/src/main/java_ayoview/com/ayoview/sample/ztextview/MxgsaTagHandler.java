@@ -38,7 +38,7 @@ public class MxgsaTagHandler implements Html.TagHandler {
         public void onClick(View widget) {
             // TODO Auto-generated method stub
             //具体代码，可以是跳转页面，可以是弹出对话框，下面是跳转页面
-            //mContext.startActivity(new Intent(mContext, MainActivity.class));
+            //mContext.startActivity(new Intent(mContext, DemoMainActivity.class));
             Toaster.toastShort("点击了标签部分");
         }
     }

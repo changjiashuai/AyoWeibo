@@ -26,7 +26,6 @@ android {
                             'src/main/java_issues',
                             'src/main/java_opensource',
                             'src/main/java_seven',
-                            'src/main/java_snowy',
                             'src/main/lib_particle']
         }
     }

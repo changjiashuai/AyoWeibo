@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AyoHttpWeiboDemo.iml" filepath="$PROJECT_DIR$/AyoHttpWeiboDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AyoWeibo.iml" filepath="$PROJECT_DIR$/AyoWeibo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ayodatabase/ayodatabase.iml" filepath="$PROJECT_DIR$/ayodatabase/ayodatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/ayohttp/ayohttp.iml" filepath="$PROJECT_DIR$/ayohttp/ayohttp.iml" />
@@ -12,6 +12,7 @@
       <module fileurl="file://$PROJECT_DIR$/ayoview/ayoview.iml" filepath="$PROJECT_DIR$/ayoview/ayoview.iml" />
       <module fileurl="file://$PROJECT_DIR$/eventbus/eventbus.iml" filepath="$PROJECT_DIR$/eventbus/eventbus.iml" />
       <module fileurl="file://$PROJECT_DIR$/mediachooser/mediachooser.iml" filepath="$PROJECT_DIR$/mediachooser/mediachooser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rxjavasample/rxjavasample.iml" filepath="$PROJECT_DIR$/rxjavasample/rxjavasample.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/umeng/umeng.iml" filepath="$PROJECT_DIR$/umeng/umeng.iml" />
       <module fileurl="file://$PROJECT_DIR$/weibosdk/weibosdk.iml" filepath="$PROJECT_DIR$/weibosdk/weibosdk.iml" />

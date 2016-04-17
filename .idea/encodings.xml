@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/ayoimage_sample/src/main/java/me" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimage_sample/src/main/res/drawable-nodpi" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimage_sample/src/main/res/layout/activity_single.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimage_sample/src/main/res/layout/activity_viewpager.xml" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimage_sample/src/main/res/menu" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/Attacher.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/DefaultOnDoubleTapListener.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/IAttacher.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/OnPhotoTapListener.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/OnScaleChangeListener.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/OnScaleDragGestureListener.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/OnViewTapListener.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/PhotoDraweeView.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/ayoimageloader/src/main/java/org/ayo/view/photo/ScaleDragDetector.java" charset="GBK" />
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

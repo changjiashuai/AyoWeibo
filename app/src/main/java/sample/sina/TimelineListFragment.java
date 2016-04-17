@@ -13,19 +13,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ayo.weibo.api.WeiboService;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.sina.weibo.sdk.demo.AccessTokenKeeper;
 
 import org.ayo.http.R;
-import org.ayo.http.callback.BaseHttpCallback;
-import org.ayo.http.callback.model.ResponseModel;
-import org.ayo.http.utils.HttpProblem;
+import org.ayo.http.retrofit.RetrofitManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 import sample.App;
 import sample.BaseFragment;
-import sample.sina.api.WeiboApi;
 import sample.sina.model.ResponseTimeline;
 import sample.sina.model.Timeline;
 
@@ -74,32 +78,66 @@ public class TimelineListFragment extends BaseFragment {
 
     private void loadData() {
 
-        WeiboApi.getPublicTimelines("公共微博", new BaseHttpCallback<ResponseTimeline>() {
+        WeiboService api = RetrofitManager.getRetrofit().create(WeiboService.class);
+        Observable<ResponseTimeline> observable = api.getPublicTimelines(AccessTokenKeeper.readAccessToken(App.app).getToken(),50+"", 1+"", 0+"");
+        observable.map(new Func1<ResponseTimeline, List<Timeline>>() {
             @Override
-            public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, ResponseTimeline responseTimeline) {
-                if (isSuccess) {
-                    if (responseTimeline.statuses == null || responseTimeline.statuses.size() == 0) {
+            public List<Timeline> call(ResponseTimeline responseTimeline) {
+                return responseTimeline.statuses;
+            }
+
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<List<Timeline>>() {
+                    @Override
+                    public void call(List<Timeline> statuses) {
+                        if (statuses == null || statuses.size() == 0) {
                         Toast.makeText(getActivity(), "没数据了", Toast.LENGTH_SHORT).show();
                     } else {
                         if (isLoadMore) {
                             if (list == null || list.size() == 0) {
-                                list = responseTimeline.statuses;
+                                list = statuses;
                             } else {
-                                list.addAll(responseTimeline.statuses);
+                                list.addAll(statuses);
                             }
                             mAdapter.notifyDataSetChanged(list);
                         } else {
-                            list = responseTimeline.statuses;
+                            list = statuses;
                             mAdapter.notifyDataSetChanged(list);
                         }
                     }
 
                     btn_more.setText("加载第X页".replace("X", (pageNow + 1) + ""));
-                } else {
-                    Toast.makeText(App.app, resp.getFailMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+                    }
+                });
+
+
+
+//        WeiboApi.getPublicTimelines("公共微博", new BaseHttpCallback<ResponseTimeline>() {
+//            @Override
+//            public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, ResponseTimeline responseTimeline) {
+//                if (isSuccess) {
+//                    if (responseTimeline.statuses == null || responseTimeline.statuses.size() == 0) {
+//                        Toast.makeText(getActivity(), "没数据了", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        if (isLoadMore) {
+//                            if (list == null || list.size() == 0) {
+//                                list = responseTimeline.statuses;
+//                            } else {
+//                                list.addAll(responseTimeline.statuses);
+//                            }
+//                            mAdapter.notifyDataSetChanged(list);
+//                        } else {
+//                            list = responseTimeline.statuses;
+//                            mAdapter.notifyDataSetChanged(list);
+//                        }
+//                    }
+//
+//                    btn_more.setText("加载第X页".replace("X", (pageNow + 1) + ""));
+//                } else {
+//                    Toast.makeText(App.app, resp.getFailMessage(), Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
 

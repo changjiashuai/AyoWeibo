@@ -1,5 +1,7 @@
 package sample.sina.model;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/4/13.
  */
@@ -17,7 +19,7 @@ public class Timeline {
     public String mid;  //": "5612814510546515491",;
     public String reposts_count;  //": 8,;
     public String comments_count;  //": 9,;
-    public String annotations;  //": [],;
+    public List<Annotation> annotations;  //": [],;
     public User user;
 
     /*

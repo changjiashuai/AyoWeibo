@@ -14,8 +14,7 @@ import com.facebook.imagepipeline.image.QualityInfo;
 import com.facebook.imagepipeline.producers.HttpUrlConnectionNetworkFetcher;
 
 import org.ayo.http.AyoHttp;
-
-import java.io.File;
+import org.ayo.http.retrofit.RetrofitManager;
 
 /**
  * Created by Administrator on 2016/4/11.
@@ -39,6 +38,8 @@ public class App extends Application {
                 d.uncaughtException(thread, throwable);
             }
         });
+
+        RetrofitManager.init(this, "https://api.weibo.com/2/");
 
     }
 

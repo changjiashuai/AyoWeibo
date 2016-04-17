@@ -26,6 +26,6 @@ public class DemoCheckBox1Activity extends BaseActivity implements AnimCheckBox.
 
     @Override
     public void onChange(boolean checked) {
-        Log.d("MainActivity", "checked-->" + checked);
+        Log.d("DemoMainActivity", "checked-->" + checked);
     }
 }
