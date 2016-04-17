@@ -17,10 +17,11 @@ import com.ayo.sample.zsdk.ToolkitSampleActivity;
 import com.ayoview.notifysample.DialogDemoActivity;
 import com.ayoview.sample.deepmind.DemoCustomMenuActivity;
 import com.ayoview.sample.drawable.DemoDrawableActivity;
+import com.ayoview.sample.tmpl_recyclerview.DemoRecyclerActivity;
 import com.ayoview.sample.zbutton.ButtonDemoActivity;
 import com.ayoview.sample.zsimplepromt.SvProgressHudDemoActivity;
 import com.ayoview.sample.ztextview.TextViewDemoActivity;
-import com.ayoview.sample.ztmpl_listview.TmplListActivity;
+import com.ayoview.sample.tmpl_listview.TmplListActivity;
 import com.cowthan.sample.menu.Leaf;
 import com.cowthan.sample.menu.Menu;
 import com.cowthan.sample.menu.MenuItem;
@@ -133,6 +134,7 @@ public class Config{
             {
                 menuItem5.addLeaf(new Leaf("Activity和Fragment基类", "", null));
                 menuItem5.addLeaf(new Leaf("ListView和GridView模板", "", TmplListActivity.class));
+                menuItem5.addLeaf(new Leaf("RecyclerView模板", "", DemoRecyclerActivity.class));
                 menuItem5.addLeaf(new Leaf("界面主框架", "", null));
             }
 

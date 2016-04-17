@@ -20,7 +20,6 @@ public class AdvanceHtmlTagHandler implements Html.TagHandler {
     public AdvanceHtmlTagHandler(Context context){
         mContext=context;
     }
-
     public void handleTag(boolean opening, String tag, Editable output, XMLReader xmlReader) {
         if (tag.toLowerCase().equals("mxgsa")) {
             if (opening) {

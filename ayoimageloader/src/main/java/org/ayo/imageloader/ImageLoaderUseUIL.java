@@ -3,6 +3,7 @@ package org.ayo.imageloader;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -179,7 +180,11 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 	@Override
 	public String getCachePath(String url) {
 		try {
-			return DiskCacheUtils.findInCache(url, ImageLoader.getInstance().getDiskCache()).getAbsolutePath();
+			if(DiskCacheUtils.findInCache(url, ImageLoader.getInstance().getDiskCache()) == null){
+				return "";
+			}else{
+				return DiskCacheUtils.findInCache(url, ImageLoader.getInstance().getDiskCache()).getAbsolutePath();
+			}
 			//return ImageLoader.getInstance().getDiskCache().get(url).getAbsolutePath();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -193,18 +198,20 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 		if(!(iv instanceof ImageView)){
 			throw new RuntimeException("参数1必须是ImageView");
 		}
-
+		Log.i("aaa", "1111");
 		if(VanGogh.isValidUri(thumbUri)){
 			//先加载先行缩略图，并且不用等待结束
 			showImage(iv, thumbUri, null, 0, 0, null);
 			placeHolderLoading = 0;
 			placeHolderFail = 0;
 		}
-
+		Log.i("aaa", "2222");
 		String url = "";
 		if(VanGogh.isValidUri(uri)){
 			if(VanGogh.isLocalPath(uri)){
 				url = VanGogh.getUri(uri);
+			}else{
+				url = uri;
 			}
 			if(url == null){
 				throw new IllegalArgumentException("非法本地图片路径：" + uri);
@@ -218,10 +225,8 @@ public class ImageLoaderUseUIL implements AyoImageLoader{
 			if(VanGogh.isValidResourceId(placeHolderFail)){
 				db.showImageOnFail(placeHolderFail);
 			}
-
-			optionsBuilder.build();
-
-			ImageLoader.getInstance().displayImage(url, (ImageView)iv, options, new MyImageLoadingListener(callback), new MyImageLoadingProgressListener(callback));
+			Log.i("aaa", "3333");
+			ImageLoader.getInstance().displayImage(url, (ImageView)iv, db.build(), new MyImageLoadingListener(callback), new MyImageLoadingProgressListener(callback));
 		}else{
 			throw new IllegalArgumentException("非法图片路径：" + uri);
 		}

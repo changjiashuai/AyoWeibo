@@ -3,6 +3,4 @@
     android:versionCode="5"
     android:versionName="2.5.0" >
 
-    <uses-sdk android:minSdkVersion="15" />
-
 </manifest>

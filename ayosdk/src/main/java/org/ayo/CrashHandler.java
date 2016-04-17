@@ -5,9 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
-import android.os.Looper;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.ayo.file.Files;
 
@@ -77,22 +75,22 @@ public class CrashHandler implements UncaughtExceptionHandler {
     /** 
      */
     private boolean handleException(Throwable ex) {  
-        if (ex == null) {
-            return true;  
-        }  
-        final String msg = ex.getLocalizedMessage();  
+//        if (ex == null) {
+//            return true;
+//        }
+//        final String msg = ex.getLocalizedMessage();
         ex.printStackTrace();
-        new Thread() {
-            @Override  
-            public void run() {  
-                Looper.prepare();
-                Toast.makeText(mContext, "Sorry for the crash", Toast.LENGTH_LONG).show();
-                Looper.loop();  
-            }  
-        }.start();  
-        collectCrashDeviceInfo(mContext);
-        String crashFileName = saveCrashInfoToFile(ex);
-        //sendCrashReportsToServer(mContext);
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                Looper.prepare();
+//                Toast.makeText(mContext, "Sorry for the crash", Toast.LENGTH_LONG).show();
+//                Looper.loop();
+//            }
+//        }.start();
+//        collectCrashDeviceInfo(mContext);
+//        String crashFileName = saveCrashInfoToFile(ex);
+//        //sendCrashReportsToServer(mContext);
         return true;  
     }  
   

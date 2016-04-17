@@ -127,7 +127,7 @@ public class VanGogh {
 			imageLoader.showImage(iv, uri, localThumbUri, placeHolderLoading, placeHolderFail, callback);
 
 		}else{
-
+			throw new RuntimeException("非法路径: " + uri);
 		}
 	}
 

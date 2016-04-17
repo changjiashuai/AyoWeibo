@@ -6,8 +6,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ayoview.sample.ztmpl_listview.TmplAdapter;
-import com.ayoview.sample.ztmpl_listview.TmplBean;
+import com.ayoview.sample.tmpl_listview.TmplAdapter;
+import com.ayoview.sample.tmpl_listview.TmplBean;
 import com.cowthan.sample.BaseActivity;
 import com.cowthan.sample.R;
 
