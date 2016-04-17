@@ -706,4 +706,50 @@ public class Flesco {
         setImageUri(iv, uri);
     }
 
+//    public static void getBitmapInputStream(final DataSubscriberCallback callback, String thumb) {
+//        if (TextUtils.isEmpty(thumb) && callback != null) {
+//            callback.onFailed();
+//            return;
+//        }
+//        ImageRequest imageRequest = ImageRequest.fromUri(thumb);
+//        ImagePipeline imagePipeline = Fresco.getImagePipeline();
+//        DataSource<CloseableReference<PooledByteBuffer>> dataSource = imagePipeline
+//                .fetchEncodedImage(imageRequest, null);
+//        dataSource.subscribe(new BaseDataSubscriber<CloseableReference<PooledByteBuffer>>() {
+//            @Override
+//            protected void onNewResultImpl(
+//                    DataSource<CloseableReference<PooledByteBuffer>> dataSource) {
+//                try {
+//                    CloseableReference<PooledByteBuffer> imageReference = dataSource.getResult();
+//                    if (imageReference != null) {
+//                        try {
+//                            PooledByteBuffer image = imageReference.get();
+//                            // do something with the image
+//                            PooledByteBufferInputStream sourceIs = new PooledByteBufferInputStream(
+//                                    image);
+//                            BufferedInputStream bis = new BufferedInputStream(sourceIs);
+//                            if (callback != null) {
+//                                callback.onSuccess(bis);
+//                                return;
+//                            }
+//                        } finally {
+//                            CloseableReference.closeSafely(imageReference);
+//                        }
+//                    }
+//                    if (callback != null)
+//                        callback.onFailed();
+//                } finally {
+//                    dataSource.close();
+//                }
+//            }
+//
+//            @Override
+//            protected void onFailureImpl(
+//                    DataSource<CloseableReference<PooledByteBuffer>> dataSource) {
+//                if (callback != null)
+//                    callback.onFailed();
+//            }
+//        }, CallerThreadExecutor.getInstance());
+//    }
+
 }
