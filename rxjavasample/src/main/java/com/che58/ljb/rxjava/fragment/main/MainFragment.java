@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
+import com.che58.ljb.rxjava.fragment.LessonsFragment;
 import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.MergeFragment;
 import com.che58.ljb.rxjava.fragment.Net2Fragment;
@@ -36,6 +37,12 @@ public class MainFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main, null);
         ButterKnife.bind(this, view);
         return view;
+    }
+
+
+    @OnClick(R.id.btn_lessons)
+    void btn_lessons() {
+        open(new LessonsFragment());
     }
 
     @OnClick(R.id.btn_net)
