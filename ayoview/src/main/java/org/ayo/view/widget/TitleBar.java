@@ -112,7 +112,7 @@ public class TitleBar extends FrameLayout{
 		iv.setTag(index);
 		this.title_bar_ll_right.addView(iv);
 		iv.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				callback.onRightButtonClicked(index, v);
@@ -120,8 +120,9 @@ public class TitleBar extends FrameLayout{
 		});
 		return this;
 	}
-	public TitleBar bgColor(int colorId){
-		this.findViewById(R.id.title_bar_root).setBackgroundResource(colorId);
+	public TitleBar bgColor(int color){
+		this.findViewById(R.id.title_bar_root).setBackgroundColor(color);
 		return this;
 	}
+
 }

@@ -173,4 +173,8 @@ public class PageGroupView extends FrameLayout implements IPageGroup {
         subPageHandler.setCheck(position, false, false);
     }
 
+
+    public void setMessageNotify(int postion, int num){
+        main_footer.setItemNewsCount(postion, num);
+    }
 }

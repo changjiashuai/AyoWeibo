@@ -5,6 +5,12 @@
     android:orientation="vertical"
     >
 
+    <org.ayo.view.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+
     <ListView
         android:id="@+id/lv_list"
         android:layout_width="match_parent"

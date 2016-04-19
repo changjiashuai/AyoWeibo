@@ -16,6 +16,7 @@ import org.ayo.http.R;
 import org.ayo.http.callback.BaseHttpCallback;
 import org.ayo.http.callback.model.ResponseModel;
 import org.ayo.http.utils.HttpProblem;
+import org.ayo.weibo.App;
 
 import java.util.ArrayList;
 import java.util.List;

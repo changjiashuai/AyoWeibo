@@ -7,12 +7,14 @@ import android.net.Uri;
 import com.facebook.cache.disk.DiskCacheConfig;
 import com.facebook.common.util.ByteConstants;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.decoder.ProgressiveJpegConfig;
 import com.facebook.imagepipeline.image.ImmutableQualityInfo;
 import com.facebook.imagepipeline.image.QualityInfo;
 import com.facebook.imagepipeline.producers.HttpUrlConnectionNetworkFetcher;
+import com.facebook.imagepipeline.request.ImageRequest;
 
 import java.io.File;
 
@@ -699,6 +701,18 @@ public class Flesco {
         }else if(uri.startsWith("asset")){
             setImageUri(iv, Uri.parse(uri));
         }
+    }
+
+    public static void setImageUri(SimpleDraweeView iv, String localPath, String remotePath){
+        ImageRequest request = ImageRequest.fromUri(localPath);
+        ImageRequest request2 = ImageRequest.fromUri(remotePath);
+        ImageRequest[] requests = { request, request2 };
+
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setFirstAvailableImageRequests(requests)
+                .setOldController(iv.getController())
+                .build();
+        iv.setController(controller);
     }
 
     public static void setImageResource(SimpleDraweeView iv, int id){
