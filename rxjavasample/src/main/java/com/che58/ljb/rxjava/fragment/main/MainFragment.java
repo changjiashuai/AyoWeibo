@@ -10,16 +10,16 @@ import android.view.ViewGroup;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.BufferFragment;
 import com.che58.ljb.rxjava.fragment.CheckBoxUpdateFragment;
-import com.che58.ljb.rxjava.fragment.LessonsFragment;
+import com.che58.ljb.rxjava.fragment.DebounceFragment;
 import com.che58.ljb.rxjava.fragment.LoopFragment;
 import com.che58.ljb.rxjava.fragment.MergeFragment;
 import com.che58.ljb.rxjava.fragment.Net2Fragment;
+import com.che58.ljb.rxjava.fragment.NetFragment;
+import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
 import com.che58.ljb.rxjava.fragment.PublishSubjectFragment;
 import com.che58.ljb.rxjava.fragment.TimerFragment;
 import com.che58.ljb.rxjava.fragment.ZipFragment;
-import com.che58.ljb.rxjava.fragment.NetFragment;
-import com.che58.ljb.rxjava.fragment.NotMoreClickFragment;
-import com.che58.ljb.rxjava.fragment.DebounceFragment;
+import com.che58.ljb.rxjava.fragment.lesson.LessonMenuFragment;
 import com.che58.ljb.rxjava.rxbus.RxBusDemoFragment;
 
 import butterknife.ButterKnife;
@@ -42,7 +42,7 @@ public class MainFragment extends Fragment {
 
     @OnClick(R.id.btn_lessons)
     void btn_lessons() {
-        open(new LessonsFragment());
+        open(new LessonMenuFragment());
     }
 
     @OnClick(R.id.btn_net)

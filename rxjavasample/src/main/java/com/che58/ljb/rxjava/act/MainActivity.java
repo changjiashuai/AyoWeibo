@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.che58.ljb.rxjava.R;
 import com.che58.ljb.rxjava.fragment.main.MainFragment;
 import com.che58.ljb.rxjava.rxbus.RxBus;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.trello.rxlifecycle.components.support.RxFragmentActivity;
 
 public class MainActivity extends RxFragmentActivity {
@@ -23,6 +24,7 @@ public class MainActivity extends RxFragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Fresco.initialize(this);
         initFragment();
     }
 

@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import sample.BaseFragmentActivity;
-import sample.GalleryClassesActivity;
 
 /**
  * Created by Administrator on 2016/4/13.
@@ -20,7 +19,7 @@ public class TimeLineActivity extends BaseFragmentActivity  {
 
     @Override
     protected void initFragment(FragmentManager fragmentManager, View root) {
-        TimelineListFragment frag = new TimelineListFragment();
+        TimelineListFragment2 frag = new TimelineListFragment2();
         frag.setTimeLineType("public");
         fragmentManager.beginTransaction().replace(root.getId(), frag).commit();
     }
