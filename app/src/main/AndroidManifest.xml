@@ -16,19 +16,51 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name="sample.App"
+        android:name="org.ayo.weibo.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
-        <activity android:name="sample.MainActivity">
+        <activity android:name="org.ayo.weibo.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="org.ayo.app.base.TmplActivityStandard"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:launchMode="standard"
+            android:theme="@style/AyoTransparentTheme" />
+
+        <activity
+            android:name="org.ayo.app.base.TmplActivitySingleTask"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            android:theme="@style/AyoTransparentTheme" />
+
+        <activity
+            android:name="org.ayo.app.base.TmplActivitySingleTop"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:theme="@style/AyoTransparentTheme" />
+
+        <activity
+            android:name="org.ayo.app.base.TmplActivitySingleInstance"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
+            android:theme="@style/AyoTransparentTheme" />
+
+
+
+
+
         <activity android:name="sample.GalleryClassesActivity">
         </activity>
         <activity android:name="sample.GallerysActivity">
@@ -37,8 +69,6 @@
         </activity>
 
 
-        <activity android:name="sample.sina.TimeLineActivity">
-        </activity>
 
         <!-- 微博相关 -->
         <!-- 主 Activity -->

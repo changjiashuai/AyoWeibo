@@ -3,7 +3,7 @@ package com.ayo.weibo.api;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
-import sample.sina.model.ResponseTimeline;
+import org.ayo.weibo.model.ResponseTimeline;
 
 /**
  * Created by Administrator on 2016/4/17.

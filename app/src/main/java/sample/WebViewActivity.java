@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 
+import org.ayo.app.tmpl.AyoWebViewFragment;
 import org.ayo.http.R;
 
 /**
@@ -27,7 +28,7 @@ public class WebViewActivity extends AppCompatActivity {
         setContentView(R.layout.ac_webview);
 
         FrameLayout fl_root = (FrameLayout) findViewById(R.id.fl_root);
-        final BaseWebViewFragment frag = new BaseWebViewFragment() {
+        final AyoWebViewFragment frag = new AyoWebViewFragment() {
             @Override
             public void setJsInfomation(WebView webview) {
 

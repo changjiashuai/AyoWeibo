@@ -33,7 +33,7 @@ public class CustomRadioGroup extends LinearLayout{
 	 */
 	private static final int 
 		TEXT_START_COLOR=Color.GRAY,
-		END_COLOR=Color.parseColor("#ff0000"),
+		END_COLOR=Color.parseColor("#45c01a"),
 		TEXT_START_R=Color.red(TEXT_START_COLOR),		
 		TEXT_START_G=Color.green(TEXT_START_COLOR),			
 		TEXT_START_B=Color.blue(TEXT_START_COLOR),
@@ -42,7 +42,7 @@ public class CustomRadioGroup extends LinearLayout{
 		TEXT_DIF_B=Color.blue(END_COLOR)-TEXT_START_B;
 	;
 	//相关的资源ID：
-	private final int ID_LAYOUT= R.layout.ayo_layout_page_group_custom_radio_button,ID_LAYOUT_TEXT=R.layout.ayo_layout_page_group_custom_radio_button2,
+	private final int ID_LAYOUT = R.layout.ayo_layout_page_group_custom_radio_button,ID_LAYOUT_TEXT=R.layout.ayo_layout_page_group_custom_radio_button2,
 			ID_IMAGE_TOP=R.id.custom_radio_button_image_top,
 			ID_IMAGE_BOTTOM=R.id.custom_radio_button_image_botom,
 			ID_TEXT=R.id.custom_radio_button_text,
