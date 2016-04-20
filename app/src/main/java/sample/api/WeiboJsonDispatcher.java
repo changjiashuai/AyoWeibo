@@ -1,4 +1,4 @@
-package org.ayo.weibo.api;
+package sample.api;
 
 import org.ayo.http.callback.JsonResponseDispatcher;
 import org.ayo.http.callback.model.ResponseModel;

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:background="#ffffff"
+    android:background="#e2e2e2"
      >
 
     <org.ayo.view.pullrefresh.PtrFrameLayout
@@ -23,7 +23,6 @@
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#bbccaa"
             />
 
     </org.ayo.view.pullrefresh.PtrFrameLayout>

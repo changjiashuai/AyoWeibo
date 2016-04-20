@@ -1,28 +1,26 @@
 package org.ayo.app.common;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import org.ayo.view.layout.swipeback.SwipeBackActivity;
+/**
+ * Created by Administrator on 2016/4/20.
+ */
+public class AyoActivity extends AppCompatActivity {
 
-public abstract class AyoActivity extends SwipeBackActivity{
-	
-	protected ActivityDelegate agent = new ActivityDelegate();
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
-		agent.attach(this);
-	}
+    protected ActivityDelegate agent = new ActivityDelegate();
 
-	@Override
-	protected void onDestroy() {
-		agent.detach();
-		super.onDestroy();
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);
+        agent.attach(this);
+    }
 
-	protected AyoActivity getActivity(){
-		return this;
-	}
-	
+    @Override
+    protected void onDestroy() {
+        agent.detach();
+        super.onDestroy();
+    }
+
 }

@@ -3,7 +3,7 @@ package org.ayo.weibo.model;
 /**
  * Created by Administrator on 2016/4/13.
  */
-public class User {
+public class User  extends BaseModel{
 
 
     /**

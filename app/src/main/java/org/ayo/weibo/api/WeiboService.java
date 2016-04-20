@@ -1,9 +1,10 @@
-package com.ayo.weibo.api;
+package org.ayo.weibo.api;
+
+import org.ayo.weibo.model.ResponseTimeline;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
-import org.ayo.weibo.model.ResponseTimeline;
 
 /**
  * Created by Administrator on 2016/4/17.

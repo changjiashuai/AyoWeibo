@@ -1,14 +1,14 @@
-package org.ayo.weibo.api;
+package org.ayo.weibo.api2;
 
 import com.sina.weibo.sdk.demo.AccessTokenKeeper;
 
 import org.ayo.http.AyoRequest;
 import org.ayo.http.callback.BaseHttpCallback;
 import org.ayo.http.worker.HttpWorkerUseOkhttp;
-
 import org.ayo.weibo.App;
-import sample.http.FastJsonParser;
 import org.ayo.weibo.model.ResponseTimeline;
+
+import sample.http.FastJsonParser;
 
 /**
  * 微博api接口

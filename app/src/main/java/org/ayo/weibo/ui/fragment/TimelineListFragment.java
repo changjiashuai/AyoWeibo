@@ -1,33 +1,29 @@
 package org.ayo.weibo.ui.fragment;
 
-import android.net.Uri;
-import android.text.Html;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.ayo.weibo.api.WeiboService;
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.sina.weibo.sdk.demo.AccessTokenKeeper;
 
-import org.ayo.app.common.AyoFragment;
+import org.ayo.app.tmpl.AyoRecyclerViewFragment;
+import org.ayo.app.tmpl.Condition;
+import org.ayo.app.tmpl.ErrorReason;
 import org.ayo.app.tmpl.pagegroup.ISubPage;
-import org.ayo.http.R;
+import org.ayo.http.callback.BaseHttpCallback;
+import org.ayo.http.callback.model.ResponseModel;
 import org.ayo.http.retrofit.RetrofitManager;
-import org.ayo.view.widget.TitleBar;
+import org.ayo.http.utils.HttpProblem;
+import org.ayo.lang.Lang;
+import org.ayo.notify.Toaster;
+import org.ayo.view.recycler.SimpleRecyclerAdapter;
 import org.ayo.weibo.App;
+import org.ayo.weibo.Config;
+import org.ayo.weibo.api.WeiboService;
+import org.ayo.weibo.api2.ApiTimeLine;
 import org.ayo.weibo.model.ResponseTimeline;
 import org.ayo.weibo.model.Timeline;
-import org.ayo.weibo.ui.prompt.TitleBarUtils;
+import org.ayo.weibo.ui.adapter.TimeLineAdapter;
+import org.ayo.weibo.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -37,58 +33,23 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Administrator on 2016/4/11.
+ * 微博列表页
  */
-public class TimelineListFragment extends AyoFragment implements ISubPage{
-
-
-    ListView lv_list;
-
-    private int pageNow = 1;
-    private boolean isLoadMore = false;
-    TimeLineAdapter mAdapter;
-    List<Timeline> list;
-    Button btn_more;
-
-    private String timeLineType = "";
+public class TimelineListFragment extends AyoRecyclerViewFragment implements ISubPage{
 
     private boolean isFirstPage = false;
     private boolean isFirstCome = true;
 
-    public void setTimeLineType(String timeLineType) {
-        this.timeLineType = timeLineType;
-    }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.frag_tmpl_timeline_list;
-    }
-
-    @Override
-    protected void onCreateView(View root) {
-
-        TitleBar titlebar = findViewById(R.id.titlebar);
-        TitleBarUtils.setTitleBar(titlebar, "Timeline");
-
-        lv_list = (ListView) findViewById(R.id.lv_list);
-        mAdapter = new TimeLineAdapter(null);
-        lv_list.setAdapter(mAdapter);
-        btn_more = (Button) findViewById(R.id.btn_more);
-        btn_more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pageNow++;
-                isLoadMore = true;
-                loadData();
-            }
-        });
-
+    protected void onCreateViewFinished(View root) {
         if(isFirstPage){
-            loadData();
+            //如果是第一个显示的页面
+            autoRefresh();
+        }else{
+            //不干什么事
         }
     }
-
-
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -100,7 +61,12 @@ public class TimelineListFragment extends AyoFragment implements ISubPage{
                 isFirstCome = false;
             }else{
                 //其他所有情况，都在这里重新加载（也他妈不一定，看业务需求）
-                loadData();
+                if(Lang.isEmpty(getList())){
+                    //如果没有数据，就自动加载
+                    autoRefresh();
+                }else{
+                    //如果已经有数据了，先别加载了
+                }
             }
         }
 
@@ -108,68 +74,60 @@ public class TimelineListFragment extends AyoFragment implements ISubPage{
 
 
     private void loadData() {
+        TimeLineCondition cond = (TimeLineCondition) getCondition();
+        cond.onPullDown();
 
-        WeiboService api = RetrofitManager.getRetrofit().create(WeiboService.class);
-        Observable<ResponseTimeline> observable = api.getPublicTimelines(AccessTokenKeeper.readAccessToken(App.app).getToken(),50+"", 1+"", 0+"");
-        observable.map(new Func1<ResponseTimeline, List<Timeline>>() {
-            @Override
-            public List<Timeline> call(ResponseTimeline responseTimeline) {
-                return responseTimeline.statuses;
-            }
+        if(Config.API.USE_RETROFIT){
+            WeiboService api = RetrofitManager.getRetrofit().create(WeiboService.class);
+            Observable<ResponseTimeline> observable = api.getPublicTimelines(
+                    cond.access_token,
+                    cond.pageSize + "",
+                    cond.pageNow + "",
+                    cond.base_app);
+            observable.map(new Func1<ResponseTimeline, List<Timeline>>() {
+                @Override
+                public List<Timeline> call(ResponseTimeline responseTimeline) {
+                    return responseTimeline.statuses;
+                }
 
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<List<Timeline>>() {
-                    @Override
-                    public void call(List<Timeline> statuses) {
-                        if (statuses == null || statuses.size() == 0) {
-                        Toast.makeText(getActivity(), "没数据了", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (isLoadMore) {
-                            if (list == null || list.size() == 0) {
-                                list = statuses;
-                            } else {
-                                list.addAll(statuses);
-                            }
-                            mAdapter.notifyDataSetChanged(list);
-                        } else {
-                            list = statuses;
-                            mAdapter.notifyDataSetChanged(list);
+            }).subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Action1<List<Timeline>>() {
+                        @Override
+                        public void call(List<Timeline> statuses) {
+                            onLoadOk(statuses);
                         }
-                    }
+                    });
+        }else{
+//            ApiTimeLine.getPublicTimelines("获取最新微博",
+//                    cond.access_token,
+//                    cond.pageSize + "",
+//                    cond.pageNow + "",
+//                    cond.base_app,
+//                    callback);
 
-                    btn_more.setText("加载第X页".replace("X", (pageNow + 1) + ""));
-                    }
-                });
+            ApiTimeLine.getPublicTimelinesByUid("获取我发布的微博",
+                    cond.access_token,
+                    cond.pageSize,
+                    cond.pageNow,
+                    Utils.getCurrentWeiboUserUid(),
+                    callback);
+        }
 
 
 
-//        WeiboApi.getPublicTimelines("公共微博", new BaseHttpCallback<ResponseTimeline>() {
-//            @Override
-//            public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, ResponseTimeline responseTimeline) {
-//                if (isSuccess) {
-//                    if (responseTimeline.statuses == null || responseTimeline.statuses.size() == 0) {
-//                        Toast.makeText(getActivity(), "没数据了", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        if (isLoadMore) {
-//                            if (list == null || list.size() == 0) {
-//                                list = responseTimeline.statuses;
-//                            } else {
-//                                list.addAll(responseTimeline.statuses);
-//                            }
-//                            mAdapter.notifyDataSetChanged(list);
-//                        } else {
-//                            list = responseTimeline.statuses;
-//                            mAdapter.notifyDataSetChanged(list);
-//                        }
-//                    }
-//
-//                    btn_more.setText("加载第X页".replace("X", (pageNow + 1) + ""));
-//                } else {
-//                    Toast.makeText(App.app, resp.getFailMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
     }
+
+    private BaseHttpCallback<ResponseTimeline> callback = new BaseHttpCallback<ResponseTimeline>() {
+        @Override
+        public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, ResponseTimeline responseTimeline) {
+            if(isSuccess){
+                onLoadOk(responseTimeline.statuses);
+            }else{
+                onLoadFail(ErrorReason.SERVER, Lang.isEmpty(getList()));
+            }
+        }
+    };
 
     @Override
     public void onPageVisibleChange(boolean isVisible) {
@@ -181,82 +139,62 @@ public class TimelineListFragment extends AyoFragment implements ISubPage{
         isFirstPage = isTheFirstPage;
     }
 
-
-
-    class TimeLineAdapter extends BaseAdapter {
-
-        private List<Timeline> list;
-
-        private TimeLineAdapter(List<Timeline> list) {
-            this.list = list;
-            if (this.list == null) this.list = new ArrayList<Timeline>();
-        }
-
-        @Override
-        public int getCount() {
-            return list.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            View v = View.inflate(App.app, R.layout.item_timeline, null);
-            TextView tv_content = (TextView) v.findViewById(R.id.tv_content);
-            SimpleDraweeView iv_user_logo = (SimpleDraweeView) v.findViewById(R.id.iv_user_logo);
-            SimpleDraweeView iv_content = (SimpleDraweeView) v.findViewById(R.id.iv_content);
-            TextView tv_user_name = (TextView) v.findViewById(R.id.tv_user_name);
-            TextView tv_info = (TextView) v.findViewById(R.id.tv_info);
-
-            final Timeline bean = list.get(i);
-            tv_content.setText(bean.text);
-            tv_user_name.setText(bean.user.name);
-
-            String info = bean.created_at + " " + "来自 " + bean.source;
-            Spanned infoSpan = Html.fromHtml(info);
-            tv_info.setText(infoSpan);
-
-            iv_user_logo.setImageURI(parse(bean.user.avatar_large));
-
-            if(bean.hasImage()){
-                iv_content.setVisibility(View.VISIBLE);
-                iv_content.setImageURI(parse(bean.getImageUrl()));
-                Log.e("iiiiii--thumbnail_pic", bean.thumbnail_pic);
-                Log.e("iiiiii--bmiddle_pic", bean.bmiddle_pic);
-                Log.e("iiiiii--original_pic", bean.original_pic);
-                Log.e("iiiiii--pic_ids", bean.pic_ids + "");
-            }else{
-                iv_content.setVisibility(View.GONE);
-            }
-
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //WebViewActivity.start(getActivity()s, bean.id + "");
-                }
-            });
-
-            
-            return v;
-        }
-
-        public void notifyDataSetChanged(List<Timeline> list) {
-            this.list = list;
-            this.notifyDataSetChanged();
-        }
+    @Override
+    protected SimpleRecyclerAdapter newAdapter() {
+        return new TimeLineAdapter(getActivity(), null);
     }
 
-    public static Uri parse(String url) {
-        if (TextUtils.isEmpty(url))
-            return null;
-        return Uri.parse(url);
+    @Override
+    protected void onRefresh() {
+        TimeLineCondition cond = (TimeLineCondition) getCondition();
+        cond.onPullDown();
+        loadData();
+    }
+
+    @Override
+    protected void onLoadMore() {
+        TimeLineCondition cond = (TimeLineCondition) getCondition();
+        cond.onPullUp();
+        loadData();
+    }
+
+
+    @Override
+    public void onNotAnyMore() {
+        Toaster.toastShort("没有更多数据了");
+    }
+
+    @Override
+    public Condition initCondition() {
+        TimeLineCondition cond = new TimeLineCondition();
+        cond.reset();
+        return cond;
+    }
+
+
+    private class TimeLineCondition extends Condition{
+
+        public int pageNow = 1;
+        public String access_token;
+        public int pageSize = 20;
+        public String base_app = "0";
+
+        @Override
+        public void onPullDown() {
+            pageNow = 1;
+        }
+
+        @Override
+        public void onPullUp() {
+            pageNow++;
+        }
+
+        @Override
+        public void reset() {
+            pageNow = 1;
+            access_token = AccessTokenKeeper.readAccessToken(App.app).getToken();
+            pageSize = 20;
+            base_app = "0";
+        }
     }
 }

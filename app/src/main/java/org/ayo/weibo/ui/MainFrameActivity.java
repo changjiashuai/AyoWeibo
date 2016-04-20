@@ -9,11 +9,13 @@ import org.ayo.app.tmpl.pagegroup.ISubPage;
 import org.ayo.app.tmpl.pagegroup.PageGroupView;
 import org.ayo.app.tmpl.pagegroup.PageIndicatorInfo;
 import org.ayo.http.R;
+import org.ayo.view.widget.TitleBar;
 import org.ayo.weibo.ui.fragment.ArticleFragment;
 import org.ayo.weibo.ui.fragment.ConversationListFragment;
 import org.ayo.weibo.ui.fragment.ProfileFragment;
 import org.ayo.weibo.ui.fragment.ShoppingFragment;
 import org.ayo.weibo.ui.fragment.TimelineListFragment;
+import org.ayo.weibo.ui.prompt.TitleBarUtils;
 
 /**
  * Created by Administrator on 2016/4/13.
@@ -32,6 +34,8 @@ public class MainFrameActivity extends AyoActivityAttacher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wb_ac_main_frame);
 
+        TitleBar titlebar = findViewById(R.id.titlebar);
+        TitleBarUtils.setTitleBar(titlebar, "假微博");
 
         pgv_pagers = (PageGroupView) findViewById(R.id.pgv_pagers);
 

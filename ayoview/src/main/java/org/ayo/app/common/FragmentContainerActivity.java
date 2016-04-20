@@ -13,7 +13,7 @@ import genius.android.view.R;
  *  Fragment管界面
  *
  */
-public abstract class FragmentContainerActivity extends AyoActivity {
+public abstract class FragmentContainerActivity extends AyoSwipeBackActivity {
 
     /**
      * 这里能做的事：

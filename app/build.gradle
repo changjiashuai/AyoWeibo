@@ -41,4 +41,5 @@ dependencies {
     compile project(':ayoview')
     compile project(':ayosdk')
     compile project(':ayoimageloader')
+    compile project(':vedio-player-manager')
 }

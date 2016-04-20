@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ayo.weibo.api.WeiboService;
+import org.ayo.weibo.api.WeiboService;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sina.weibo.sdk.demo.AccessTokenKeeper;
 

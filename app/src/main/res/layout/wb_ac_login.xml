@@ -6,15 +6,40 @@
     android:id="@+id/root"
     >
 
-    <Button
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="登录"
-        android:textSize="17sp"
-        android:textColor="#000000"
-        android:id="@+id/btn_login"
+    <org.ayo.view.progress.ProgressView
+        android:id="@+id/pv_loading"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_centerInParent="true"
         />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rl_content"
+        >
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="登录"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:id="@+id/btn_login"
+            android:layout_centerInParent="true"
+            />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/btn_login"
+            android:layout_marginTop="20dp"
+            android:text="直接进入"
+            android:textSize="17sp"
+            android:textColor="#000000"
+            android:id="@+id/btn_in"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
 
 
 </RelativeLayout>

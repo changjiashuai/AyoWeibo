@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/4/13.
  */
-public class Timeline {
+public class Timeline extends BaseModel {
     public String text;  //
     public String created_at;  //": "Tue May 31 17:46:55 +0800 2011",;
     public String id;  //": 11488058246,;
@@ -21,6 +21,8 @@ public class Timeline {
     public String comments_count;  //": 9,;
     public List<Annotation> annotations;  //": [],;
     public User user;
+
+    public Timeline retweeted_status;
 
     /*
      http://ww1.sinaimg.cn/thumbnail/d6bb8c63jw1f2vidmuqsoj20ku0kwwgq.jpg

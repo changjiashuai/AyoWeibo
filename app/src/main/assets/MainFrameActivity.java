@@ -1,5 +1,4 @@
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,7 +7,7 @@ import android.widget.TextView;
 
 import com.sina.weibo.sdk.demo.WBDemoMainActivity;
 
-import org.ayo.app.common.AyoActivityAttacher;
+import org.ayo.app.common.AyoSwipeBackActivityAttacher;
 import org.ayo.http.R;
 import org.ayo.weibo.App;
 import org.ayo.weibo.ui.TimeLineActivity;
@@ -21,7 +20,7 @@ import sample.GalleryClassesActivity;
 /**
  * Created by Administrator on 2016/4/13.
  */
-public class MainFrameActivity extends AyoActivityAttacher {
+public class MainFrameActivity extends AyoSwipeBackActivityAttacher {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

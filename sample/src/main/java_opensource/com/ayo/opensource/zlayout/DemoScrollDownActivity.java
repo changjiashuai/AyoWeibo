@@ -11,14 +11,14 @@ import android.widget.Toast;
 import com.cowthan.sample.R;
 
 
-import org.ayo.app.common.AyoActivity;
+import org.ayo.app.common.AyoSwipeBackActivity;
 
 import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2016/1/25.
  */
-public class DemoScrollDownActivity extends AyoActivity {
+public class DemoScrollDownActivity extends AyoSwipeBackActivity {
 
     private ScrollDownLayout mScrollDownLayout;
     private ArrayList<Girl> mAllGirlList;
