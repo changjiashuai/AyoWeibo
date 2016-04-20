@@ -13,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ayo.weibo.api.WeiboService;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.sina.weibo.sdk.demo.AccessTokenKeeper;
 
@@ -23,6 +22,7 @@ import org.ayo.http.R;
 import org.ayo.http.retrofit.RetrofitManager;
 import org.ayo.view.widget.TitleBar;
 import org.ayo.weibo.App;
+import org.ayo.weibo.api.WeiboService;
 import org.ayo.weibo.model.ResponseTimeline;
 import org.ayo.weibo.model.Timeline;
 import org.ayo.weibo.ui.prompt.TitleBarUtils;
@@ -117,7 +117,8 @@ public class TimelineListFragment extends AyoFragment implements ISubPage{
                 return responseTimeline.statuses;
             }
 
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        }).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<List<Timeline>>() {
                     @Override
                     public void call(List<Timeline> statuses) {

@@ -2,9 +2,9 @@ package org.ayo.app.common;
 
 import android.os.Bundle;
 
-import org.ayo.app.base.SwipeBackActivityAttacher;
+import org.ayo.app.base.ActivityAttacher;
 
-public abstract class AyoActivityAttacher extends SwipeBackActivityAttacher{
+public abstract class AyoActivityAttacher extends ActivityAttacher{
 	
 	protected ActivityDelegate agent = new ActivityDelegate();
 	

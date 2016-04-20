@@ -22,7 +22,7 @@ import org.ayo.http.callback.BaseHttpCallback;
 import org.ayo.http.callback.model.ResponseModel;
 import org.ayo.http.utils.HttpProblem;
 import org.ayo.weibo.App;
-import org.ayo.weibo.api.WeiboApi;
+import sample.api.WeiboApi;
 import org.ayo.weibo.model.ResponseTimeline;
 import org.ayo.weibo.model.Timeline;
 

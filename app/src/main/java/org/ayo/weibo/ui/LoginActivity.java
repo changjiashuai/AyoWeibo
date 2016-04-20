@@ -8,7 +8,7 @@ import android.widget.Button;
 import com.sina.weibo.sdk.demo.WBDemoMainActivity;
 
 import org.ayo.app.base.ActivityAttacher;
-import org.ayo.app.common.AyoActivityAttacher;
+import org.ayo.app.common.AyoSwipeBackActivityAttacher;
 import org.ayo.http.R;
 
 import butterknife.Bind;
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Administrator on 2016/4/20.
  */
-public class LoginActivity extends AyoActivityAttacher {
+public class LoginActivity extends AyoSwipeBackActivityAttacher {
 
     public static void start(Context c){
         ActivityAttacher.startActivity(c, LoginActivity.class, null, false, ActivityAttacher.LAUNCH_MODE_STANDARD);
