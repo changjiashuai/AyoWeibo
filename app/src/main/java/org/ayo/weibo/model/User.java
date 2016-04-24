@@ -37,32 +37,32 @@ public class User  extends BaseModel{
      */
 
     public String id;
-    public String screen_name;
+//    public String screen_name;
     public String name;
-    public String province;
-    public String city;
-    public String location;
-    public String description;
-    public String url;
-    public String profile_image_url;
-    public String domain;
-    public String gender;
-    public String followers_count;
-    public String friends_count;
-    public String statuses_count;
-    public String favourites_count;
-    public String created_at;
-    public String following;
-    public String allow_all_act_msg;
-    public String remark;
-    public String geo_enabled;
-    public String verified;
-    public String allow_all_comment;
+//    public String province;
+//    public String city;
+//    public String location;
+//    public String description;
+//    public String url;
+//    public String profile_image_url;
+//    public String domain;
+//    public String gender;
+//    public String followers_count;
+//    public String friends_count;
+//    public String statuses_count;
+//    public String favourites_count;
+//    public String created_at;
+//    public String following;
+//    public String allow_all_act_msg;
+//    public String remark;
+//    public String geo_enabled;
+//    public String verified;
+//    public String allow_all_comment;
     public String avatar_large;
-    public String verified_reason;
-    public String follow_me;
-    public String online_status;
-    public String bi_followers_count;
+//    public String verified_reason;
+//    public String follow_me;
+//    public String online_status;
+//    public String bi_followers_count;
 
 }
 /*

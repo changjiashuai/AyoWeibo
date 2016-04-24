@@ -35,7 +35,7 @@ public class ApiTimeLine {
     }
 
     /**
-     * 根据用户uid获取他发布的微博
+     * 根据用户uid获取他发布的微博，最多他妈的返回5条，而且第二页数据基本就是空了，有意思吗，操你妈
      * <p/>
      * 注意：微博api规定，uid与screen_name只能为当前授权用户，就是说得和token对应
      * 并且这两个参数只能选一个
@@ -73,4 +73,34 @@ public class ApiTimeLine {
                 .go(new WeiboJsonDispatcher(ResponseTimeline.class, new FastJsonParser()), callback);
     }
 
+
+    /**
+     * 获取当前登录用户及其所关注（授权）用户的最新微博
+     * 只返回授权用户的微博，非授权用户的微博将不返回；
+     例如一次调用total_number是50，但其中授权用户发的只有10条，则实际只返回10条微博；
+     使用官方移动SDK调用，可多返回30%的非授权用户的微博；
+     * @param flag
+     * @param access_token
+     * @param pageSize
+     * @param pageNow
+     * @param callback
+     */
+    public static void getPublicTimelinesByMyFriends(String flag,
+                                               String access_token,
+                                               int pageSize,
+                                               int pageNow,
+                                               BaseHttpCallback<ResponseTimeline> callback) {
+        WeiboApi.request().flag(flag)
+                .url(Config.API.HOST_WEIBO + "statuses/friends_timeline.json")
+                .method("get")
+                .param("access_token", access_token)
+                .param("since_id", "0")
+                .param("max_id", "0")
+                .param("count", pageSize + "")
+                .param("page", pageNow + "")
+                .param("base_app", "0")
+                .param("feature", "0")
+                .param("trim_user", "0")
+                .go(new WeiboJsonDispatcher(ResponseTimeline.class, new FastJsonParser()), callback);
+    }
 }

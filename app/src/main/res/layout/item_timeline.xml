@@ -92,7 +92,26 @@
             android:lineSpacingExtra="3dp"
             android:textSize="15sp"
             />
-        <com.facebook.drawee.view.SimpleDraweeView
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fl_image_contaner"
+            android:background="@android:color/white"
+            >
+
+            <org.ayo.view.layout.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fl_flowlayout"
+                android:layout_marginBottom="3dp"
+                >
+
+
+            </org.ayo.view.layout.FlowLayout>
+
+        </FrameLayout>
+        <!--<com.facebook.drawee.view.SimpleDraweeView
             android:layout_marginTop="10dp"
             android:id="@+id/iv_content"
             android:layout_width="match_parent"
@@ -101,7 +120,7 @@
             fresco:failureImageScaleType="fitCenter"
             fresco:progressBarImageScaleType="centerCrop"
             android:background="#969696"
-            />
+            />-->
     </LinearLayout>
 
     <LinearLayout
@@ -110,6 +129,7 @@
         android:orientation="horizontal"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:visibility="gone"
         >
 
 

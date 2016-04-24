@@ -19,7 +19,7 @@ import org.ayo.view.recycler.MyViewHolder;
 import org.ayo.view.recycler.SimpleRecyclerAdapter;
 import org.ayo.weibo.App;
 import org.ayo.weibo.model.Timeline;
-import org.ayo.weibo.ui.TimeLineDetailActivity;
+import org.ayo.weibo.ui.activity.TimeLineDetailActivity;
 
 import java.util.List;
 
@@ -52,7 +52,6 @@ public class TimeLineAdapter extends SimpleRecyclerAdapter<Timeline> {
 
         TextView tv_content = (TextView) holder.findViewById(R.id.tv_content);
         SimpleDraweeView iv_user_logo = (SimpleDraweeView) holder.findViewById(R.id.iv_user_logo);
-        SimpleDraweeView iv_content = (SimpleDraweeView) holder.findViewById(R.id.iv_content);
         TextView tv_user_name = (TextView) holder.findViewById(R.id.tv_user_name);
         TextView tv_info = (TextView) holder.findViewById(R.id.tv_info);
 
@@ -60,24 +59,15 @@ public class TimeLineAdapter extends SimpleRecyclerAdapter<Timeline> {
             bean.text = "可点击观看（多图或视频）---\n" + bean.text;
         }
         tv_content.setText(bean.text);
-        tv_user_name.setText(bean.user.name);
-
         String info = bean.created_at + " " + "来自 " + bean.source;
         Spanned infoSpan = Html.fromHtml(info);
         tv_info.setText(infoSpan);
 
-        iv_user_logo.setImageURI(parse(bean.user.avatar_large));
-
-        if(bean.hasImage()){
-            iv_content.setVisibility(View.VISIBLE);
-            iv_content.setImageURI(parse(bean.getImageUrl()));
-            Log.e("iiiiii--thumbnail_pic", bean.thumbnail_pic);
-            Log.e("iiiiii--bmiddle_pic", bean.bmiddle_pic);
-            Log.e("iiiiii--original_pic", bean.original_pic);
-            Log.e("iiiiii--pic_ids", bean.pic_ids + "");
-        }else{
-            iv_content.setVisibility(View.GONE);
+        if(bean.user != null){
+            tv_user_name.setText(bean.user.name);
+            iv_user_logo.setImageURI(parse(bean.user.avatar_large));
         }
+
 
         holder.findViewById(R.id.root).setOnClickListener(new View.OnClickListener() {
             @Override

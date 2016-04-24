@@ -33,7 +33,7 @@ import com.sina.weibo.sdk.auth.sso.SsoHandler;
 import com.sina.weibo.sdk.exception.WeiboException;
 
 import org.ayo.http.R;
-import org.ayo.weibo.ui.MainFrameActivity;
+import org.ayo.weibo.ui.activity.LoginActivity;
 
 import java.text.SimpleDateFormat;
 
@@ -180,7 +180,7 @@ public class WBAuthActivity extends Activity {
                 Toast.makeText(WBAuthActivity.this, 
                         R.string.weibosdk_demo_toast_auth_success, Toast.LENGTH_SHORT).show();
 
-                MainFrameActivity.start(WBAuthActivity.this);
+                LoginActivity.start(WBAuthActivity.this);
                 finish();
 
             } else {

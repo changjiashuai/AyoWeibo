@@ -22,7 +22,7 @@ import org.ayo.weibo.App;
 import java.util.ArrayList;
 import java.util.List;
 
-import sample.http.Httpper;
+import sample.http.HttpperGirl;
 import sample.model.Gallery;
 
 /**
@@ -85,22 +85,22 @@ public class GallerysActivity extends AppCompatActivity {
     }
 
     private void loadData(){
-        Httpper.getGalleryByClass("获取图片列表", getIntent().getStringExtra("id"), pageNow, new BaseHttpCallback<List<Gallery>>() {
+        HttpperGirl.getGalleryByClass("获取图片列表", getIntent().getStringExtra("id"), pageNow, new BaseHttpCallback<List<Gallery>>() {
             @Override
             public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, List<Gallery> galleryClasses) {
 
-                if(isSuccess){
-                    if(galleryClasses == null || galleryClasses.size() == 0){
+                if (isSuccess) {
+                    if (galleryClasses == null || galleryClasses.size() == 0) {
                         Toast.makeText(GallerysActivity.this, "没数据了", Toast.LENGTH_SHORT).show();
-                    }else{
-                        if(isLoadMore){
-                            if(list == null || list.size() == 0){
+                    } else {
+                        if (isLoadMore) {
+                            if (list == null || list.size() == 0) {
                                 list = galleryClasses;
-                            }else{
+                            } else {
                                 list.addAll(galleryClasses);
                             }
                             mAdapter.notifyDataSetChanged(list);
-                        }else{
+                        } else {
                             list = galleryClasses;
                             mAdapter.notifyDataSetChanged(list);
                         }
@@ -108,7 +108,7 @@ public class GallerysActivity extends AppCompatActivity {
 
                     btn_more.setText("加载第X页".replace("X", (pageNow + 1) + ""));
 
-                }else{
+                } else {
                     Log.i("http", "结束2。。。。。");
                     Toast.makeText(App.app, resp.getFailMessage(), Toast.LENGTH_SHORT).show();
                 }

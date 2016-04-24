@@ -10,7 +10,7 @@ import com.sina.weibo.sdk.demo.WBDemoMainActivity;
 import org.ayo.app.common.AyoSwipeBackActivityAttacher;
 import org.ayo.http.R;
 import org.ayo.weibo.App;
-import org.ayo.weibo.ui.TimeLineActivity;
+import org.ayo.weibo.ui.activity.TimeLineActivity;
 
 import java.util.ArrayList;
 import java.util.List;

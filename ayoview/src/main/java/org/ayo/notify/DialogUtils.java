@@ -3,15 +3,6 @@ package org.ayo.notify;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-import android.view.View;
-import android.widget.SimpleAdapter;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import genius.android.view.R;
 
 /**
  * 原生对话框
@@ -248,23 +239,18 @@ public class DialogUtils {
      * @param title
      * @param icon
      * @param data
-     * @param defaultSelected
-     * @param onButtonClicked
      */
-    public static void singleChoice(Activity a, String title, int icon, final String[] data, int defaultSelected,
-                                    final String positiveButton,
-                                    final String neutralButton,
-                                    final String negativeButton,
-                                    final BaseOnDialogClicked onButtonClicked){
-        AlertDialog.Builder builder2 = processCommonFeature(a, title, icon, positiveButton, neutralButton, negativeButton, onButtonClicked);
-        builder2.create().show();
-        builder2.setSingleChoiceItems(data, defaultSelected, new DialogInterface.OnClickListener() {
-
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(onButtonClicked != null) onButtonClicked.onItemClicked(dialog, which);
-            }
-        });
-        builder2.create().show();
+    public static void singleChoice(Activity a, String title, int icon, final String[] data,
+                                    final String positiveButton){
+//        AlertDialog.Builder builder2 = processCommonFeature(a, title, icon, positiveButton, neutralButton, negativeButton, onButtonClicked);
+//        builder2.create().show();
+//        builder2.setSingleChoiceItems(data, defaultSelected, new DialogInterface.OnClickListener() {
+//
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if(onButtonClicked != null) onButtonClicked.onItemClicked(dialog, which);
+//            }
+//        });
+//        builder2.create().show();
     }
 }

@@ -170,4 +170,13 @@ public class ViewPagerHandler implements SubPageHandler {
     public ISubPage getCurrentSubPage() {
         return currentPage;
     }
+
+    @Override
+    public int getCurrentItem() {
+        return currentPosition;
+    }
+
+    public void addOnPageChangeListener(ViewPager.OnPageChangeListener op){
+        viewpager.addOnPageChangeListener(op);
+    }
 }

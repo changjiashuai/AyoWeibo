@@ -2,12 +2,12 @@ package org.ayo.app.tmpl.pagegroup.handler;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.widget.FrameLayout;
 
 import org.ayo.app.tmpl.pagegroup.CustomRadioGroup;
 import org.ayo.app.tmpl.pagegroup.ISubPage;
 import org.ayo.app.tmpl.pagegroup.PageIndicatorInfo;
-import genius.android.view.R;
 
 /**
  * 把子页面添加到main_root，并和main_footer绑定，处理所有事件
@@ -41,5 +41,9 @@ public interface SubPageHandler {
      * @param postion
      */
     void setCheck(int postion, boolean animateScroll, boolean isFirstPage);
+
+    int getCurrentItem();
+
+    void addOnPageChangeListener(ViewPager.OnPageChangeListener op);
 }
 

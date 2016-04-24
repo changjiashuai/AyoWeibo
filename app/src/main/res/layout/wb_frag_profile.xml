@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:gravity="center_horizontal"
+              android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_head"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/ic_launcher"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/iv_head"
+                    android:layout_marginLeft="15dp"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_right_arrow"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="16dp"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/iv_head"
+                android:layout_marginTop="15dp"
+                >
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:text="收藏"
+                    android:gravity="center"
+                    android:drawableTop="@drawable/ic_setting"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:text="夜间"
+                    android:gravity="center"
+                    android:drawableTop="@drawable/ic_setting"
+                    />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:text="设置"
+                    android:gravity="center"
+                    android:drawableTop="@drawable/ic_setting"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_pengyouquan"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_timeline"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="本地相册"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/txt_friend"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_shop"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="设置话题"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txt_saoyisao"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_saoyisao"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="公益sdk"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/txt_yaoyiyao"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_yao"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="公益api"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/txt_nearby"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_nearby"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="活动"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/txt_piaoliuping"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_ping"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="特卖"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/txt_vedio"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_shop"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="我来爆料"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+
+            <TextView
+                android:id="@+id/txt_game"
+                style="@style/TxtTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/setting_item_selector"
+                android:drawableLeft="@drawable/icon_de_game"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="游戏"
+                android:textSize="16sp" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1.0dip"
+                android:background="@color/black2" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

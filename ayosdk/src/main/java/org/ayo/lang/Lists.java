@@ -59,6 +59,18 @@ public class Lists {
 		}
 	}
 
+	public static <T> void each(T[] c, OnWalk<T> callback) {
+		if (callback == null)
+			return;
+		if (Lang.isNotEmpty(c)) {
+			int count = 0;
+			for (T o : c) {
+				callback.process(count, o, c.length);
+				count++;
+			}
+		}
+	}
+
 	public static <T> void remove(List<T> c, OnWalk<T> callback) {
 		if (callback == null)
 			return;

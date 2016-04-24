@@ -249,7 +249,7 @@ public abstract class AyoRecyclerViewFragment<T> extends Fragment {
 
     }
 
-    protected void autoRefresh(){
+    public void autoRefresh(){
         mPtrFrameLayout.postDelayed(new Runnable() {
             @Override
             public void run() {

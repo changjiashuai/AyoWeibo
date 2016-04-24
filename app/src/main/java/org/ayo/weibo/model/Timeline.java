@@ -1,25 +1,25 @@
 package org.ayo.weibo.model;
 
-import java.util.List;
-
 /**
- * Created by Administrator on 2016/4/13.
+ * 为什么会有这么多注释掉的，因为一开始我是用的微博API，但微博API限制太多，根本没法做一个能用的仿微博客户端，
+ * 所以我决定自己往七牛上传图片，然后自己构造json，存sd卡里，直接从sd卡里加载数据，至于怎么下载最新的数据，还没想好，
+ * 原则就是不自己写服务器
  */
 public class Timeline extends BaseModel {
     public String text;  //
     public String created_at;  //": "Tue May 31 17:46:55 +0800 2011",;
     public String id;  //": 11488058246,;
     public String source;  //": "<a href="http://weibo.com" rel="nofollow">新浪微博</a>",;
-    public String favorited;  //": false,;
-    public String truncated;  //": false,;
-    public String in_reply_to_status_id;  //": "",;
-    public String in_reply_to_user_id;  //": "",;
-    public String in_reply_to_screen_name;  //": "",;
-    public String geo;  //": null,;
-    public String mid;  //": "5612814510546515491",;
-    public String reposts_count;  //": 8,;
-    public String comments_count;  //": 9,;
-    public List<Annotation> annotations;  //": [],;
+//    public String favorited;  //": false,;
+//    public String truncated;  //": false,;
+//    public String in_reply_to_status_id;  //": "",;
+//    public String in_reply_to_user_id;  //": "",;
+//    public String in_reply_to_screen_name;  //": "",;
+//    public String geo;  //": null,;
+//    public String mid;  //": "5612814510546515491",;
+//    public String reposts_count;  //": 8,;
+//    public String comments_count;  //": 9,;
+//    public List<Annotation> annotations;  //": [],;
     public User user;
 
     public Timeline retweeted_status;

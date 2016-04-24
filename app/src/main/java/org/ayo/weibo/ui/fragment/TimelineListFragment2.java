@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -153,7 +152,6 @@ public class TimelineListFragment2 extends AyoFragment implements ISubPage{
             View v = View.inflate(App.app, R.layout.item_timeline, null);
             TextView tv_content = (TextView) v.findViewById(R.id.tv_content);
             SimpleDraweeView iv_user_logo = (SimpleDraweeView) v.findViewById(R.id.iv_user_logo);
-            SimpleDraweeView iv_content = (SimpleDraweeView) v.findViewById(R.id.iv_content);
             TextView tv_user_name = (TextView) v.findViewById(R.id.tv_user_name);
             TextView tv_info = (TextView) v.findViewById(R.id.tv_info);
 
@@ -167,16 +165,6 @@ public class TimelineListFragment2 extends AyoFragment implements ISubPage{
 
             iv_user_logo.setImageURI(parse(bean.user.avatar_large));
 
-            if(bean.hasImage()){
-                iv_content.setVisibility(View.VISIBLE);
-                iv_content.setImageURI(parse(bean.getImageUrl()));
-                Log.e("iiiiii--thumbnail_pic", bean.thumbnail_pic);
-                Log.e("iiiiii--bmiddle_pic", bean.bmiddle_pic);
-                Log.e("iiiiii--original_pic", bean.original_pic);
-                Log.e("iiiiii--pic_ids", bean.pic_ids + "");
-            }else{
-                iv_content.setVisibility(View.GONE);
-            }
 
             v.setOnClickListener(new View.OnClickListener() {
                 @Override

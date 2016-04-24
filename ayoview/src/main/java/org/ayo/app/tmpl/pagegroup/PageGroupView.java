@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
@@ -176,5 +177,13 @@ public class PageGroupView extends FrameLayout implements IPageGroup {
 
     public void setMessageNotify(int postion, int num){
         main_footer.setItemNewsCount(postion, num);
+    }
+
+    public int getCurrentItem(){
+        return subPageHandler.getCurrentItem();
+    }
+
+    public void addOnPageChangeListener(ViewPager.OnPageChangeListener op){
+        subPageHandler.addOnPageChangeListener(op);
     }
 }
