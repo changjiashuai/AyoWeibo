@@ -108,9 +108,9 @@ public class MainFrameActivity extends AyoActivityAttacher {
     private void changeTitlebar(int index){
         int currentItem = index;
         if(currentItem == 0){
-            changeTitleBarTo0Or1("动态", Config.DIR.APP_DIR);
+            changeTitleBarTo0Or1(0, "动态", Config.DIR.APP_DIR);
         }else if(currentItem == 1){
-            changeTitleBarTo0Or1("路书", Config.DIR.APP_DIR);
+            changeTitleBarTo0Or1(1, "路书", Config.DIR.USER_DIR);
         }else if(currentItem == 2){
             changeTitleBarTo2();
         }else if(currentItem == 3){
@@ -120,7 +120,7 @@ public class MainFrameActivity extends AyoActivityAttacher {
         }
     }
 
-    private void changeTitleBarTo0Or1(String title, final String dataDir){
+    private void changeTitleBarTo0Or1(final int item, String title, final String dataDir){
         TitleBarUtils.setTitleBar(titlebar, title);
         titlebar.leftButton(0)
                 .clearRightButtons()
@@ -138,7 +138,7 @@ public class MainFrameActivity extends AyoActivityAttacher {
                         if(index == 1){
                             Poper.showCreateSheet(getActivity());
                         }else if(index == 2){
-                            pickTopic(dataDir);
+                            pickTopic(item, dataDir);
                         }
                     }
                 });
@@ -192,7 +192,7 @@ public class MainFrameActivity extends AyoActivityAttacher {
                 .clearRightButtons();
     }
 
-    private void pickTopic(String dataDir){
+    private void pickTopic(final int item, String dataDir){
         final String[] topic = ApiStatus.getTopics(dataDir);
         if(Lang.isEmpty(topic)){
             Toaster.toastShort("没有可选的主题");
@@ -200,8 +200,13 @@ public class MainFrameActivity extends AyoActivityAttacher {
             ActionSheetUtils.showActionSheet(getActivity(), topic, new ActionSheetDialog.OnSheetItemClickListener() {
                 @Override
                 public void onClick(int which) {
-                    appFragment.setTopic(Config.DIR.APP_DIR, topic[which - 1]);
-                    appFragment.autoRefresh();
+                    if(item == 0){
+                        appFragment.setTopic(Config.DIR.APP_DIR, topic[which - 1]);
+                        appFragment.autoRefresh();
+                    }else if(item == 1){
+                        userFragment.setTopic(Config.DIR.USER_DIR, topic[which - 1]);
+                        userFragment.autoRefresh();
+                    }
                 }
             });
 
