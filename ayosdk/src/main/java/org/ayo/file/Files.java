@@ -1,5 +1,11 @@
 package org.ayo.file;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.AssetManager;
+import android.net.Uri;
+import android.os.Environment;
+
 import org.ayo.Ayo;
 
 import java.io.BufferedWriter;
@@ -11,12 +17,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.AssetManager;
-import android.net.Uri;
-import android.os.Environment;
 
 public class Files {
 
@@ -57,11 +57,11 @@ public class Files {
 					path = Ayo.ROOT + subPath;
 				}
 			}
-			fileop.createFileIfNotExists(path);
+			//fileop.createFileIfNotExists(path);
 			return path;
 		}
 		
-		public static String getPathInRoot2(String subPath){
+		public static String getPathInRoot(String subPath){
 			String path = Ayo.ROOT;
 			if(subPath != null){
 				if(subPath.startsWith("/")){

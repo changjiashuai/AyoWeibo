@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 接口直接返回的json
  */
-public class ResponseTimeline {
+public class ResponseTimeline extends BaseModel {
 
     public List<Timeline> statuses;
     public String previous_cursor;

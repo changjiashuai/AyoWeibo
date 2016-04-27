@@ -59,6 +59,13 @@ public abstract class AyoRecyclerViewFragment<T> extends Fragment {
         return root;
     }
 
+    protected <T extends View> View findViewById(int id){
+        return root.findViewById(id);
+    }
+
+    protected List<T> getList(){
+        return list;
+    }
 
     private void initRecyclerView() {
         mRecyclerView = (RecyclerView) root.findViewById(R.id.recyclerview);
@@ -242,7 +249,7 @@ public abstract class AyoRecyclerViewFragment<T> extends Fragment {
 
     }
 
-    protected void autoRefresh(){
+    public void autoRefresh(){
         mPtrFrameLayout.postDelayed(new Runnable() {
             @Override
             public void run() {

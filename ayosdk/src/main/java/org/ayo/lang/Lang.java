@@ -287,5 +287,11 @@ public class Lang {
 		v.vibrate(100);
 	}
 
-	
+	public static void sleep(long millis){
+		try {
+			Thread.sleep(millis);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }

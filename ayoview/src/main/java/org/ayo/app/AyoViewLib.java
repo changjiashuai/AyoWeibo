@@ -17,6 +17,7 @@ public class AyoViewLib {
 	
 	public static void init(Context context){
 		AyoViewLib.context = context;
+		LocalDisplay.init(context);
 	}
 
 	public static void setListViewHeight(ListView listView){

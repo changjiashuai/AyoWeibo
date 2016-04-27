@@ -7,6 +7,7 @@ import org.ayo.app.AyoViewLib;
 import org.ayo.http.AyoHttp;
 import org.ayo.http.retrofit.RetrofitManager;
 import org.ayo.imageloader.Flesco;
+import org.ayo.notify.Toaster;
 
 /**
  * Created by Administrator on 2016/4/11.
@@ -32,6 +33,7 @@ public class App extends Application {
             public void uncaughtException(Thread thread, Throwable throwable) {
                 throwable.printStackTrace();
                 d.uncaughtException(thread, throwable);
+                Toaster.toastShort(throwable.getLocalizedMessage());
             }
         });
 

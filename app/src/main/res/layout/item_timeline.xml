@@ -4,22 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
+    android:id="@+id/root"
+    android:background="@android:color/white"
     >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#e2e2e2"
+        />
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        >
-   <!-- <ImageView
-        android:id="@+id/iv_user_logo"
-        android:layout_width="60dp"
         android:layout_height="60dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        />-->
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_marginTop="10dp"
+        >
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_user_logo"
             android:layout_width="60dp"
@@ -37,6 +38,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_toRightOf="@+id/iv_user_logo"
+            android:layout_marginLeft="15dp"
             android:layout_centerVertical="true"
             >
             <TextView
@@ -68,6 +70,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:visibility="gone"
         />
 
     <LinearLayout
@@ -76,6 +81,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
         >
         <TextView
             android:id="@+id/tv_content"
@@ -85,7 +92,26 @@
             android:lineSpacingExtra="3dp"
             android:textSize="15sp"
             />
-        <com.facebook.drawee.view.SimpleDraweeView
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/fl_image_contaner"
+            android:background="@android:color/white"
+            >
+
+            <org.ayo.view.layout.FlowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/fl_flowlayout"
+                android:layout_marginBottom="3dp"
+                >
+
+
+            </org.ayo.view.layout.FlowLayout>
+
+        </FrameLayout>
+        <!--<com.facebook.drawee.view.SimpleDraweeView
             android:layout_marginTop="10dp"
             android:id="@+id/iv_content"
             android:layout_width="match_parent"
@@ -93,13 +119,17 @@
             fresco:actualImageScaleType="fitCenter"
             fresco:failureImageScaleType="fitCenter"
             fresco:progressBarImageScaleType="centerCrop"
-            />
+            android:background="#969696"
+            />-->
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:visibility="gone"
         >
 
 

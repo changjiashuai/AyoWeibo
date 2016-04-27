@@ -8,28 +8,26 @@ import org.ayo.http.AyoResponse;
  */
 public class HttpPrinter {
 
-    public static void printRequest(String flag, AyoRequest req){
-        printRequest(req);
-    }
-
-    public static void printResponse(String flag, AyoResponse resp){
-        LogInner.debug(resp.data);
-    }
-
-
-    private static void printRequest(AyoRequest request) {
+    public static void printRequest(String flag, AyoRequest request){
         try {
-            LogInner.debug("--------------------");
-            LogInner.debug("request param：");
-            HttpHelper.printMap(request.params);
-            LogInner.debug("request header：");
-            HttpHelper.printMap(request.headers);
-            LogInner.debug("request eintity：");
-            LogInner.debug(request.stringEntity);
-            LogInner.debug("reqeust URL：");
-            LogInner.debug(request.url);
+            LogInner.debug(flag + "--" + "--------------------");
+            LogInner.debug(flag + "--" + "request param：");
+            HttpHelper.printMap(flag + "--", request.params);
+            LogInner.debug(flag + "--" + "request header：");
+            HttpHelper.printMap(flag + "--", request.headers);
+            LogInner.debug(flag + "--" + "request eintity：");
+            LogInner.debug(flag + "--" + request.stringEntity);
+            LogInner.debug(flag + "--" + flag + "--" + "reqeust URL：");
+            LogInner.debug(flag + "--" + request.url);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public static void printResponse(String flag, AyoResponse resp){
+        LogInner.debug(flag + "--" + resp.data);
+    }
+
+
+
 }

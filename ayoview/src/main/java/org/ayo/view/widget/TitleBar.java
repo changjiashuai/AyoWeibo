@@ -1,7 +1,5 @@
 package org.ayo.view.widget;
 
-import genius.android.view.R;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -10,6 +8,10 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.ayo.app.LocalDisplay;
+
+import genius.android.view.R;
 
 
 public class TitleBar extends FrameLayout{
@@ -65,6 +67,12 @@ public class TitleBar extends FrameLayout{
 	private ImageView generateRightButton(int id){
 		ImageView iv = new ImageView(getContext());
 		iv.setImageResource(id);
+		iv.setScaleType(ImageView.ScaleType.CENTER);
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+				LocalDisplay.dp2px(40),
+				LinearLayout.LayoutParams.MATCH_PARENT
+		);
+		iv.setLayoutParams(lp);
 		return iv;
 	}
 	

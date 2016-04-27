@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="main_color">#FF178EBB</color>
+    <color name="main_color">#FF84BB11</color>
+
+    <!-- for fab -->
+    <color name="material_blue_500">#5677fc</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="black1">#7A7E83</color>
+    <color name="black2">#ffeeeeee</color>
+    <color name="red">#FC2828</color>
 
 </resources>

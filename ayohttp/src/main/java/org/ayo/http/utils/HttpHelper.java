@@ -151,13 +151,13 @@ public class HttpHelper {
 //    	return "";
 //    }
 	
-    public static void printMap(final Map<String, String> map){
+    public static void printMap(String suffix, final Map<String, String> map){
     	try {
 
 			if(map == null) return;
 			for(String key: map.keySet()){
 				String value = map.get(key) + "";
-				LogInner.debug(key + "==>" + value);
+				LogInner.debug(suffix + key + "==>" + value);
 			}
 
 		} catch (Exception ignore) {

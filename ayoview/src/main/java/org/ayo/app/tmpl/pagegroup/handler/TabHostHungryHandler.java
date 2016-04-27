@@ -4,8 +4,9 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.widget.FrameLayout;
-import genius.android.view.R;
+
 import org.ayo.app.tmpl.pagegroup.CustomRadioGroup;
 import org.ayo.app.tmpl.pagegroup.ISubPage;
 import org.ayo.app.tmpl.pagegroup.PageIndicatorInfo;
@@ -108,7 +109,9 @@ public class TabHostHungryHandler implements SubPageHandler {
                         f.setUserVisibleHint(true);
                     }
                 }
-
+                if(onPageChangeListener != null){
+                    onPageChangeListener.onPageSelected(index);
+                }
             }
         });
 
@@ -128,10 +131,20 @@ public class TabHostHungryHandler implements SubPageHandler {
         main_footer.setCheckedIndex(position);
     }
 
+    @Override
+    public int getCurrentItem() {
+        return currentPosition;
+    }
+
     private FrameLayout generateFragmentContainer(Context context, int i){
         FrameLayout fl = new FrameLayout(context);
         fl.setId((int) (System.currentTimeMillis()%1000 - i));
         return fl;
     }
 
+    ViewPager.OnPageChangeListener onPageChangeListener;
+
+    public void addOnPageChangeListener(ViewPager.OnPageChangeListener op){
+        this.onPageChangeListener = op;
+    }
 }

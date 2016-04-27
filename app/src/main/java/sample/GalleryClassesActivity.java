@@ -21,7 +21,7 @@ import org.ayo.weibo.App;
 import java.util.ArrayList;
 import java.util.List;
 
-import sample.http.Httpper;
+import sample.http.HttpperGirl;
 import sample.model.GalleryClass;
 
 /**
@@ -43,15 +43,15 @@ public class GalleryClassesActivity extends AppCompatActivity {
         lv_list.setAdapter(new GalleryClassAdapter(null));
 
         Log.i("http", "开始。。。。。");
-        Httpper.getGalleryClassList("获取图片分类", new BaseHttpCallback<List<GalleryClass>>() {
+        HttpperGirl.getGalleryClassList("获取图片分类", new BaseHttpCallback<List<GalleryClass>>() {
             @Override
             public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, List<GalleryClass> galleryClasses) {
 
-                if(isSuccess){
+                if (isSuccess) {
                     Log.i("http", "结束1。。。。。");
                     GalleryClassAdapter adapter = new GalleryClassAdapter(galleryClasses);
                     lv_list.setAdapter(adapter);
-                }else{
+                } else {
                     Log.i("http", "结束2。。。。。");
                     Toast.makeText(App.app, resp.getFailMessage(), Toast.LENGTH_SHORT).show();
                 }

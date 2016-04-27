@@ -3,8 +3,9 @@ package org.ayo.app.tmpl.pagegroup.handler;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.widget.FrameLayout;
-import genius.android.view.R;
+
 import org.ayo.app.tmpl.pagegroup.CustomRadioGroup;
 import org.ayo.app.tmpl.pagegroup.ISubPage;
 import org.ayo.app.tmpl.pagegroup.PageIndicatorInfo;
@@ -98,7 +99,9 @@ public class TabHostLazyHandler implements SubPageHandler {
                     }
                 }
 
-
+                if(onPageChangeListener != null){
+                    onPageChangeListener.onPageSelected(index);
+                }
             }
         });
 
@@ -121,5 +124,18 @@ public class TabHostLazyHandler implements SubPageHandler {
     public void setCheck(int position, boolean animateScroll, boolean isFirstPage) {
         pages[position].setIsTheFirstPage(isFirstPage);
         main_footer.setCheckedIndex(position);
+    }
+
+    @Override
+    public int getCurrentItem() {
+        return currentPosition;
+    }
+
+
+
+    ViewPager.OnPageChangeListener onPageChangeListener;
+
+    public void addOnPageChangeListener(ViewPager.OnPageChangeListener op){
+        this.onPageChangeListener = op;
     }
 }

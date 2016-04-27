@@ -1,17 +1,14 @@
 package org.ayo.view.layout;
 
-import java.util.ArrayList;
-import java.util.List;
-
-
-
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FlowLayout extends ViewGroup
 {
@@ -216,7 +213,7 @@ public class FlowLayout extends ViewGroup
 	}
 	
 	public <T> void setAdapter(BaseFlowAdapter<T> adapter){
-		
+		this.removeAllViews();
 		///----
 		for(int i = 0; i < adapter.getCount(); i++){
 			final int pos = i;

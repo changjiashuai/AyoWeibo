@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="iconics-core-2.5.2">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.5.2/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.5.2/res" />
     </CLASSES>
@@ -8,5 +9,12 @@
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.mikepenz/iconics-core/2.5.2/d487499921196d67e43d01b4099f2604fce8535e/iconics-core-2.5.2-sources.jar!/" />
     </SOURCES>
+=======
+      <root url="file://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.5.2/res" />
+      <root url="jar://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.mikepenz/iconics-core/2.5.2/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+>>>>>>> cf609d297315f0d6354aa253952a1e57b0b1b47d
   </library>
 </component>
