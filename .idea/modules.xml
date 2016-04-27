@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/rxjavasample/rxjavasample.iml" filepath="$PROJECT_DIR$/rxjavasample/rxjavasample.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
       <module fileurl="file://$PROJECT_DIR$/umeng/umeng.iml" filepath="$PROJECT_DIR$/umeng/umeng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vedio-player-manager/vedio-player-manager.iml" filepath="$PROJECT_DIR$/vedio-player-manager/vedio-player-manager.iml" />
       <module fileurl="file://$PROJECT_DIR$/weibosdk/weibosdk.iml" filepath="$PROJECT_DIR$/weibosdk/weibosdk.iml" />
     </modules>
   </component>
