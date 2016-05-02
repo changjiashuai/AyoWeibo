@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="org.ayo.permission">
+
+    <application >
+        <activity android:name="org.ayo.permission.AskActivity"/>
+        <receiver android:name="org.ayo.permission.Ask$Receiver">
+
+            <intent-filter>
+                <action android:name="org.ayo.permission.PERMISSION_RESULT_INTENT">
+                </action>
+            </intent-filter>
+
+        </receiver>
+    </application>
+
+</manifest>

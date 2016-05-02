@@ -22,7 +22,7 @@ abstract class SafeRunnable implements Runnable {
             if (uncaughtExceptionHandler != null) {
                 uncaughtExceptionHandler.uncaughtException(Thread.currentThread(), throwable);
             }
-            //throw throwable;
+            throw throwable;
         }
     }
 

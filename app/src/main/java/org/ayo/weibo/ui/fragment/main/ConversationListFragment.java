@@ -19,12 +19,10 @@ import org.ayo.app.common.AyoFragment;
 import org.ayo.app.tmpl.pagegroup.ISubPage;
 import org.ayo.http.R;
 import org.ayo.http.retrofit.RetrofitManager;
-import org.ayo.view.widget.TitleBar;
 import org.ayo.weibo.App;
 import org.ayo.weibo.api.WeiboService;
 import org.ayo.weibo.model.ResponseTimeline;
 import org.ayo.weibo.model.Timeline;
-import org.ayo.weibo.ui.prompt.TitleBarUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,8 +64,8 @@ public class ConversationListFragment extends AyoFragment implements ISubPage{
     @Override
     protected void onCreateView(View root) {
 
-        TitleBar titlebar = findViewById(R.id.titlebar);
-        TitleBarUtils.setTitleBar(titlebar, "Chat");
+//        TitleBar titlebar = findViewById(R.id.titlebar);
+//        TitleBarUtils.setTitleBar(titlebar, "Chat");
 
         lv_list = (ListView) findViewById(R.id.lv_list);
         mAdapter = new TimeLineAdapter(null);

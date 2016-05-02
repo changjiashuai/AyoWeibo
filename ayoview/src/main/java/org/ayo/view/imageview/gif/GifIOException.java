@@ -1,5 +1,7 @@
 package org.ayo.view.imageview.gif;
 
+import android.support.annotation.NonNull;
+
 import java.io.IOException;
 
 /**
@@ -12,9 +14,10 @@ public class GifIOException extends IOException {
     /**
      * Reason which caused an exception
      */
+    @NonNull
     public final GifError reason;
 
-    private GifIOException( GifError reason) {
+    private GifIOException(@NonNull GifError reason) {
         super(reason.getFormattedDescription());
         this.reason = reason;
     }

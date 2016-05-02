@@ -22,6 +22,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.StrictMode;
 import android.os.SystemClock;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.FloatRange;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RawRes;
 import android.widget.MediaController.MediaPlayerControl;
 
 import java.io.File;
@@ -31,6 +37,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -57,7 +64,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      */
     final Bitmap mBuffer;
     final GifInfoHandle mNativeInfoHandle;
-    final ConcurrentLinkedQueue<AnimationListener> mListeners = new ConcurrentLinkedQueue<AnimationListener>();
+    final ConcurrentLinkedQueue<AnimationListener> mListeners = new ConcurrentLinkedQueue<>();
     private ColorStateList mTint;
     private PorterDuffColorFilter mTintFilter;
     private PorterDuff.Mode mTintMode;
@@ -77,7 +84,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          when opening failed
      * @throws NullPointerException if res is null
      */
-    public GifDrawable( Resources res,   int id) throws NotFoundException, IOException {
+    public GifDrawable(@NonNull Resources res, @DrawableRes @RawRes int id) throws NotFoundException, IOException {
         this(res.openRawResourceFd(id));
     }
 
@@ -89,7 +96,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          when opening failed
      * @throws NullPointerException if assets or assetName is null
      */
-    public GifDrawable( AssetManager assets,  String assetName) throws IOException {
+    public GifDrawable(@NonNull AssetManager assets, @NonNull String assetName) throws IOException {
         this(assets.openFd(assetName));
     }
 
@@ -103,7 +110,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          when opening failed
      * @throws NullPointerException if filePath is null
      */
-    public GifDrawable( String filePath) throws IOException {
+    public GifDrawable(@NonNull String filePath) throws IOException {
         this(GifInfoHandle.openFile(filePath, false), null, null, true);
     }
 
@@ -114,7 +121,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          when opening failed
      * @throws NullPointerException if file is null
      */
-    public GifDrawable( File file) throws IOException {
+    public GifDrawable(@NonNull File file) throws IOException {
         this(GifInfoHandle.openFile(file.getPath(), false), null, null, true);
     }
 
@@ -127,7 +134,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IllegalArgumentException if stream does not support marking
      * @throws NullPointerException     if stream is null
      */
-    public GifDrawable( InputStream stream) throws IOException {
+    public GifDrawable(@NonNull InputStream stream) throws IOException {
         this(GifInfoHandle.openMarkableInputStream(stream, false), null, null, true);
     }
 
@@ -139,7 +146,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws NullPointerException if afd is null
      * @throws IOException          when opening failed
      */
-    public GifDrawable( AssetFileDescriptor afd) throws IOException {
+    public GifDrawable(@NonNull AssetFileDescriptor afd) throws IOException {
         this(GifInfoHandle.openAssetFileDescriptor(afd, false), null, null, true);
     }
 
@@ -150,7 +157,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          when opening failed
      * @throws NullPointerException if fd is null
      */
-    public GifDrawable( FileDescriptor fd) throws IOException {
+    public GifDrawable(@NonNull FileDescriptor fd) throws IOException {
         this(GifInfoHandle.openFd(fd, 0, false), null, null, true);
     }
 
@@ -162,7 +169,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          if bytes does not contain valid GIF data
      * @throws NullPointerException if bytes are null
      */
-    public GifDrawable( byte[] bytes) throws IOException {
+    public GifDrawable(@NonNull byte[] bytes) throws IOException {
         this(GifInfoHandle.openByteArray(bytes, false), null, null, true);
     }
 
@@ -174,7 +181,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IOException          if buffer does not contain valid GIF data or is indirect
      * @throws NullPointerException if buffer is null
      */
-    public GifDrawable( ByteBuffer buffer) throws IOException {
+    public GifDrawable(@NonNull ByteBuffer buffer) throws IOException {
         this(GifInfoHandle.openDirectByteBuffer(buffer, false), null, null, true);
     }
 
@@ -187,7 +194,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @param resolver resolver used to query {@code uri}, can be null for file:// scheme Uris
      * @throws IOException if resolution fails or destination is not a GIF.
      */
-    public GifDrawable( ContentResolver resolver,  Uri uri) throws IOException {
+    public GifDrawable(@Nullable ContentResolver resolver, @NonNull Uri uri) throws IOException {
         this(GifInfoHandle.openUri(resolver, uri, false), null, null, true);
     }
 
@@ -255,12 +262,12 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
     }
 
     @Override
-    public void setAlpha(int alpha) {
+    public void setAlpha(@IntRange(from = 0, to = 255) int alpha) {
         mPaint.setAlpha(alpha);
     }
 
     @Override
-    public void setColorFilter( ColorFilter cf) {
+    public void setColorFilter(@Nullable ColorFilter cf) {
         mPaint.setColorFilter(cf);
     }
 
@@ -329,7 +336,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
         if (mSchedule != null) {
             try {
                 mSchedule.get();
-            } catch (Exception ignored) {
+            } catch (InterruptedException | ExecutionException ignored) {
                 //no-op
             }
         }
@@ -346,7 +353,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      *
      * @return comment or null if there is no one defined in file
      */
-    
+    @Nullable
     public String getComment() {
         return mNativeInfoHandle.getComment();
     }
@@ -366,7 +373,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      *
      * @param loopCount loop count, 0 means infinity
      */
-    public void setLoopCount(final int loopCount) {
+    public void setLoopCount(@IntRange(from = 0, to = 65535) final int loopCount) {
         mNativeInfoHandle.setLoopCount(loopCount);
     }
 
@@ -390,7 +397,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      *
      * @return current error or {@link GifError#NO_ERROR} if there was no error or drawable is recycled
      */
-    
+    @NonNull
     public GifError getError() {
         return GifError.fromCode(mNativeInfoHandle.getNativeErrorCode());
     }
@@ -403,8 +410,8 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @param resourceId resource id
      * @return correct drawable or null if creation failed
      */
-    
-    public static GifDrawable createFromResource( Resources res,   int resourceId) {
+    @Nullable
+    public static GifDrawable createFromResource(@NonNull Resources res, @DrawableRes @RawRes int resourceId) {
         try {
             return new GifDrawable(res, resourceId);
         } catch (IOException ignored) {
@@ -421,7 +428,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @param factor new speed factor, eg. 0.5f means half speed, 1.0f - normal, 2.0f - double speed
      * @throws IllegalArgumentException if factor&lt;=0
      */
-    public void setSpeed(float factor) {
+    public void setSpeed(@FloatRange(from = 0, fromInclusive = false) float factor) {
         mNativeInfoHandle.setSpeedFactor(factor);
     }
 
@@ -472,7 +479,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @throws IllegalArgumentException if position&lt;0
      */
     @Override
-    public void seekTo( final int position) {
+    public void seekTo(@IntRange(from = 0, to = Integer.MAX_VALUE) final int position) {
         if (position < 0) {
             throw new IllegalArgumentException("Position is not positive");
         }
@@ -492,7 +499,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @param frameIndex index of the frame to seek to (zero based)
      * @throws IndexOutOfBoundsException if frameIndex&lt;0
      */
-    public void seekToFrame(final int frameIndex) {
+    public void seekToFrame(@IntRange(from = 0, to = Integer.MAX_VALUE) final int frameIndex) {
         if (frameIndex < 0) {
             throw new IndexOutOfBoundsException("Frame index is not positive");
         }
@@ -512,7 +519,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @return frame at desired index
      * @throws IndexOutOfBoundsException if frameIndex&lt;0
      */
-    public Bitmap seekToFrameAndGet(final int frameIndex) {
+    public Bitmap seekToFrameAndGet(@IntRange(from = 0, to = Integer.MAX_VALUE) final int frameIndex) {
         if (frameIndex < 0) {
             throw new IndexOutOfBoundsException("Frame index is not positive");
         }
@@ -532,7 +539,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @return frame at desired position
      * @throws IndexOutOfBoundsException if position&lt;0
      */
-    public Bitmap seekToPositionAndGet(final int position) {
+    public Bitmap seekToPositionAndGet(@IntRange(from = 0, to = Integer.MAX_VALUE) final int position) {
         if (position < 0) {
             throw new IllegalArgumentException("Position is not positive");
         }
@@ -655,7 +662,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @param pixels the array to receive the frame's colors
      * @throws ArrayIndexOutOfBoundsException if the pixels array is too small to receive required number of pixels
      */
-    public void getPixels( int[] pixels) {
+    public void getPixels(@NonNull int[] pixels) {
         mBuffer.getPixels(pixels, 0, mNativeInfoHandle.width, 0, 0, mNativeInfoHandle.width, mNativeInfoHandle.height);
     }
 
@@ -719,7 +726,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
     /**
      * @return the paint used to render this drawable
      */
-    
+    @NonNull
     public final Paint getPaint() {
         return mPaint;
     }
@@ -757,7 +764,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
      * @param listener animation listener to be added, not null
      * @throws NullPointerException if listener is null
      */
-    public void addAnimationListener( AnimationListener listener) {
+    public void addAnimationListener(@NonNull AnimationListener listener) {
         mListeners.add(listener);
     }
 
@@ -771,7 +778,7 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
         return mListeners.remove(listener);
     }
 
-    //@Override
+    @Override
     public ColorFilter getColorFilter() {
         return mPaint.getColorFilter();
     }
@@ -794,14 +801,14 @@ public class GifDrawable extends Drawable implements Animatable, MediaPlayerCont
         return new PorterDuffColorFilter(color, tintMode);
     }
 
-    //@Override
+    @Override
     public void setTintList(ColorStateList tint) {
         mTint = tint;
         mTintFilter = updateTintFilter(tint, mTintMode);
         invalidateSelf();
     }
 
-    //@Override
+    @Override
     public void setTintMode(PorterDuff.Mode tintMode) {
         mTintMode = tintMode;
         mTintFilter = updateTintFilter(mTint, tintMode);

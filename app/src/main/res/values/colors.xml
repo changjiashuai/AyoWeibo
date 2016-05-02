@@ -2,6 +2,13 @@
 <resources>
 
     <color name="main_color">#FF84BB11</color>
+    <color name="bg_item_main_pressed">#e4e4e4</color>
+    <color name="bg_item_main">#f8f8f8</color>
+    <color name="gray_right_declare">#929292</color>
+    <color name="dislike_bg_normal_night">#ff666666</color>
+    <color name="dislike_bg_normal">#ff3e3e3e</color>
+    <color name="dislike_bg_pressed">#ff2b2b2b</color>
+
 
     <!-- for fab -->
     <color name="material_blue_500">#5677fc</color>

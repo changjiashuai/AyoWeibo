@@ -5,6 +5,10 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RawRes;
 
 import java.io.File;
 import java.io.FileDescriptor;
@@ -57,7 +61,7 @@ public abstract class InputSource {
          *
          * @param byteBuffer source buffer, must be direct
          */
-        public DirectByteBufferSource( ByteBuffer byteBuffer) {
+        public DirectByteBufferSource(@NonNull ByteBuffer byteBuffer) {
             this.byteBuffer = byteBuffer;
         }
 
@@ -79,7 +83,7 @@ public abstract class InputSource {
          *
          * @param bytes source array
          */
-        public ByteArraySource( byte[] bytes) {
+        public ByteArraySource(@NonNull byte[] bytes) {
             this.bytes = bytes;
         }
 
@@ -100,7 +104,7 @@ public abstract class InputSource {
          *
          * @param file source file
          */
-        public FileSource( File file) {
+        public FileSource(@NonNull File file) {
             mPath = file.getPath();
         }
 
@@ -109,7 +113,7 @@ public abstract class InputSource {
          *
          * @param filePath source file path
          */
-        public FileSource( String filePath) {
+        public FileSource(@NonNull String filePath) {
             mPath = filePath;
         }
 
@@ -132,7 +136,7 @@ public abstract class InputSource {
          * @param uri             GIF Uri, cannot be null.
          * @param contentResolver resolver, null is allowed for file:// scheme Uris only
          */
-        public UriSource( ContentResolver contentResolver,  Uri uri) {
+        public UriSource(@Nullable ContentResolver contentResolver, @NonNull Uri uri) {
             mContentResolver = contentResolver;
             mUri = uri;
         }
@@ -156,7 +160,7 @@ public abstract class InputSource {
          * @param assetManager AssetManager to read from
          * @param assetName    name of the asset
          */
-        public AssetSource( AssetManager assetManager,  String assetName) {
+        public AssetSource(@NonNull AssetManager assetManager, @NonNull String assetName) {
             mAssetManager = assetManager;
             mAssetName = assetName;
         }
@@ -178,7 +182,7 @@ public abstract class InputSource {
          *
          * @param fileDescriptor source file descriptor
          */
-        public FileDescriptorSource( FileDescriptor fileDescriptor) {
+        public FileDescriptorSource(@NonNull FileDescriptor fileDescriptor) {
             mFd = fileDescriptor;
         }
 
@@ -199,7 +203,7 @@ public abstract class InputSource {
          *
          * @param inputStream source input stream, it must support marking
          */
-        public InputStreamSource( InputStream inputStream) {
+        public InputStreamSource(@NonNull InputStream inputStream) {
             this.inputStream = inputStream;
         }
 
@@ -222,7 +226,7 @@ public abstract class InputSource {
          * @param resources  Resources to read from
          * @param resourceId resource id
          */
-        public ResourcesSource( Resources resources,   int resourceId) {
+        public ResourcesSource(@NonNull Resources resources, @DrawableRes @RawRes int resourceId) {
             mResources = resources;
             mResourceId = resourceId;
         }
@@ -243,7 +247,7 @@ public abstract class InputSource {
          * Constructs new source.
          * @param assetFileDescriptor source asset file descriptor.
          */
-        public AssetFileDescriptorSource( AssetFileDescriptor assetFileDescriptor) {
+        public AssetFileDescriptorSource(@NonNull AssetFileDescriptor assetFileDescriptor) {
             mAssetFileDescriptor = assetFileDescriptor;
         }
 

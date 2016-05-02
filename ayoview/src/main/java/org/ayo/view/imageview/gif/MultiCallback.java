@@ -2,6 +2,7 @@ package org.ayo.view.imageview.gif;
 
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import java.lang.ref.WeakReference;
@@ -16,7 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class MultiCallback implements Callback {
 
-    private final CopyOnWriteArrayList<ViewWeakReference> mViewList = new CopyOnWriteArrayList<ViewWeakReference>();
+    private final CopyOnWriteArrayList<ViewWeakReference> mViewList = new CopyOnWriteArrayList<>();
 
     @Override
     public void invalidateDrawable(final Drawable who) {
@@ -66,7 +67,7 @@ public class MultiCallback implements Callback {
      * @param view View to be associated
      */
 
-    public void addView( final View view) {
+    public void addView(@NonNull final View view) {
         for (int i = 0; i < mViewList.size(); i++) {
             final ViewWeakReference reference = mViewList.get(i);
             final View item = reference.get();

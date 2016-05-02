@@ -64,16 +64,19 @@ public class TitleBar extends FrameLayout{
 		return this;
 	}
 	
-	private ImageView generateRightButton(int id){
-		ImageView iv = new ImageView(getContext());
-		iv.setImageResource(id);
-		iv.setScaleType(ImageView.ScaleType.CENTER);
+	private View generateRightButton(int id){
+
+		View v = View.inflate(getContext(), R.layout.layout_view_titlebar_right_btn, null);
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 				LocalDisplay.dp2px(40),
 				LinearLayout.LayoutParams.MATCH_PARENT
 		);
-		iv.setLayoutParams(lp);
-		return iv;
+		v.setLayoutParams(lp);
+
+		ImageView iv = (ImageView) v.findViewById(R.id.iv);
+		iv.setImageResource(id);
+
+		return v;
 	}
 	
 	public TitleBar callback(Callback callback){
@@ -116,7 +119,7 @@ public class TitleBar extends FrameLayout{
 		return this;
 	}
 	public TitleBar rightButton(final int index, int iconId){
-		ImageView iv = generateRightButton(iconId);
+		View iv = generateRightButton(iconId);
 		iv.setTag(index);
 		this.title_bar_ll_right.addView(iv);
 		iv.setOnClickListener(new OnClickListener() {

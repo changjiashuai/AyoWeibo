@@ -1,5 +1,6 @@
 package org.ayo.view.imageview.gif;
 
+import android.support.annotation.NonNull;
 
 import java.util.Locale;
 
@@ -99,11 +100,11 @@ public enum GifError {
     /**
      * Human readable description of the error
      */
-    
+    @NonNull
     public final String description;
     int errorCode;
 
-    GifError(int code,  String description) {
+    GifError(int code, @NonNull String description) {
         errorCode = code;
         this.description = description;
     }
