@@ -1,15 +1,16 @@
 package org.ayo.view.imageview.gif;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-
 import android.content.ContentResolver;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.support.annotation.IntRange;
 import android.view.Surface;
+
+import java.io.FileDescriptor;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 /**
  * Native library wrapper
@@ -202,11 +203,11 @@ final class GifInfoHandle {
         return getCurrentLoop(gifInfoPtr);
     }
 
-    synchronized void seekToTime(final int position, final Bitmap buffer) {
+    synchronized void seekToTime(@IntRange(from = 0, to = Integer.MAX_VALUE) final int position, final Bitmap buffer) {
         seekToTime(gifInfoPtr, position, buffer);
     }
 
-    synchronized void seekToFrame(final int frameIndex, final Bitmap buffer) {
+    synchronized void seekToFrame(@IntRange(from = 0, to = Integer.MAX_VALUE) final int frameIndex, final Bitmap buffer) {
         seekToFrame(gifInfoPtr, frameIndex, buffer);
     }
 

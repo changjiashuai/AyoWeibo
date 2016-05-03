@@ -55,7 +55,7 @@ public class FragmentPager extends FrameLayout{
         this.addView(v);
 
 
-        viewpager = (ScrollerViewPager) findViewById(R.id.view_pager);
+        viewpager = (ScrollerViewPager) findViewById(R.id.view_pager1122);
     }
 
     public void attach(FragmentManager fm, List<Fragment> fragments, String[] titles, IPagerIndicator pagerIndicator, ViewPager.OnPageChangeListener onPageChangeListener){

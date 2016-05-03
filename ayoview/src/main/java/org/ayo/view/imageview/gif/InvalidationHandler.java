@@ -11,7 +11,7 @@ class InvalidationHandler extends Handler {
 
     public InvalidationHandler(GifDrawable gifDrawable) {
         super(Looper.getMainLooper());
-        mDrawableRef = new WeakReference<GifDrawable>(gifDrawable);
+        mDrawableRef = new WeakReference<>(gifDrawable);
     }
 
     @Override

@@ -42,4 +42,5 @@ dependencies {
     compile project(':ayosdk')
     compile project(':ayoimageloader')
     compile project(':vedio-player-manager')
+    compile project(':ayoask')
 }

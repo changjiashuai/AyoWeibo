@@ -1,10 +1,5 @@
 package org.ayo.view.imageview.gif;
 
-import genius.android.view.R;
-
-import java.io.IOException;
-
-import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,11 +8,19 @@ import android.graphics.RectF;
 import android.graphics.SurfaceTexture;
 import android.os.Build;
 import android.os.Parcelable;
+import android.support.annotation.FloatRange;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Surface;
 import android.view.TextureView;
 import android.widget.ImageView.ScaleType;
+
+import java.io.IOException;
+
+import genius.android.view.R;
+
 
 /**
  * <p>{@link TextureView} which can display animated GIFs. Available on API level 14
@@ -25,7 +28,7 @@ import android.widget.ImageView.ScaleType;
  * hardware accelerated window. When rendered in software, GifTextureView will draw nothing.</p>
  * <p>GIF source can be specified in XML or by calling {@link #setInputSource(InputSource)}</p>
  * <pre>
- *     &lt;org.ayo.view.imageview.gif.GifTextureView
+ *     &lt;pl.droidsonroids.gif.GifTextureView
  *          xmlns:app="http://schemas.android.com/apk/res-auto"
  *          android:id="@+id/gif_texture_view"
  *          android:scaleType="fitEnd"
@@ -40,7 +43,6 @@ import android.widget.ImageView.ScaleType;
  * {@link #setOpaque(boolean)}.
  * You can use scale types the same way as in {@link android.widget.ImageView}.</p>
  */
-@SuppressLint("NewApi")
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class GifTextureView extends TextureView {
     static {
@@ -55,8 +57,7 @@ public class GifTextureView extends TextureView {
     private RenderThread mRenderThread;
     private float mSpeedFactor = 1f;
 
-    @SuppressLint("NewApi")
-	public GifTextureView(Context context) {
+    public GifTextureView(Context context) {
         super(context);
         init(null, 0, 0);
     }
@@ -71,9 +72,9 @@ public class GifTextureView extends TextureView {
         init(attrs, defStyleAttr, 0);
     }
 
-   // @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public GifTextureView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr);
+        super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs, defStyleAttr, defStyleRes);
     }
 
@@ -288,7 +289,7 @@ public class GifTextureView extends TextureView {
      *
      * @param inputSource new animation source, may be null
      */
-    public synchronized void setInputSource( InputSource inputSource) {
+    public synchronized void setInputSource(@Nullable InputSource inputSource) {
         mRenderThread.dispose();
         mInputSource = inputSource;
         mRenderThread = new RenderThread();
@@ -304,7 +305,7 @@ public class GifTextureView extends TextureView {
      * @throws IllegalArgumentException if factor&lt;=0
      * @see GifDrawable#setSpeed(float)
      */
-    public void setSpeed(float factor) {
+    public void setSpeed(@FloatRange(from = 0, fromInclusive = false) float factor) {
         mSpeedFactor = factor;
         mRenderThread.mGifInfoHandle.setSpeedFactor(factor);
     }
@@ -316,7 +317,7 @@ public class GifTextureView extends TextureView {
      *
      * @return exception occurred during loading or playing GIF or null
      */
-    
+    @Nullable
     public IOException getIOException() {
         if (mRenderThread.mIOException != null) {
             return mRenderThread.mIOException;
@@ -331,7 +332,7 @@ public class GifTextureView extends TextureView {
      *
      * @param scaleType The desired scaling mode.
      */
-    public void setScaleType( ScaleType scaleType) {
+    public void setScaleType(@NonNull ScaleType scaleType) {
         mScaleType = scaleType;
         updateTextureViewSize(mRenderThread.mGifInfoHandle);
     }

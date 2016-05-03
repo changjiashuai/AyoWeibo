@@ -1,9 +1,5 @@
 package org.ayo.view.imageview.gif;
 
-import genius.android.view.R;
-
-import java.io.IOException;
-
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -12,6 +8,11 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
+
+import java.io.IOException;
+
+import genius.android.view.R;
+
 
 final class GifViewUtils {
     static final String ANDROID_NS = "http://schemas.android.com/apk/res/android";
@@ -57,7 +58,7 @@ final class GifViewUtils {
                     view.setBackgroundDrawable(d);
                 }
                 return true;
-            } catch (Exception ignored) {
+            } catch (IOException | Resources.NotFoundException ignored) {
                 //ignored
             }
         }

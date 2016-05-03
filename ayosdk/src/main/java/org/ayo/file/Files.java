@@ -227,7 +227,7 @@ public class Files {
 		 *  moveFromAssetToSD("DocType.properties",
 		 *                         Environment.getExternalStorageDirectory().getAbsolutePath() + "/boc_fudeng/DocType.properties");
 		 */
-	    public static void moveFromAssetToSD(String assetPath, String sdPath) {
+	    public static boolean moveFromAssetToSD(String assetPath, String sdPath) {
 	        try {
 	            File file = new File(sdPath);
 	            if (!file.exists()) {
@@ -238,7 +238,9 @@ public class Files {
 	            }
 	        } catch (Exception ex) {
 	            ex.printStackTrace();
+				return false;
 	        }
+			return true;
 
 	    }
 	    private static void inputstreamtofile(InputStream ins, File file) {

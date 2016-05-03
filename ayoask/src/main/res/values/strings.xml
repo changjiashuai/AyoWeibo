@@ -1,0 +1,5 @@
+<resources>
+    <string name="pop_ok">OK</string>
+    <string name="pop_cancel">Cancel</string>
+    <string name="pop_neutral">Don\'t Know</string>
+</resources>

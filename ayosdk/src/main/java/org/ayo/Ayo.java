@@ -18,7 +18,7 @@ public class Ayo {
 	
 	public static Context context;
 	public static String spName = "default.conf";
-	public static boolean debug = false;
+	public static boolean debug = true;
 	public static String ROOT;// default work directory
 	//public static String SERVER_ENCODE = "utf-8";
 
@@ -33,6 +33,14 @@ public class Ayo {
 
 	public static int MEM_LEVEL = MEM_LEVEL_JUST_FINE;
 
+	public static boolean init(Context context, boolean openLog){
+		Ayo.context = context;
+		Ayo.debug = openLog;
+		Display.init(context);
+
+		return true;
+	}
+
 	/**
 	 * init the genius library
 	 * @param context global context
@@ -41,6 +49,7 @@ public class Ayo {
 	 */
 	public static void init(Application context, String path, boolean openLog, boolean logToFile) {
 		Ayo.context = context;
+		Ayo.debug = openLog;
 		Display.init(context);
 		LogInner.print("genius-init: screen（{w}, {h}）".replace("{w}", Display.screenWidth + "").replace("{h}", Display.screenHeight + ""));
 		
@@ -91,27 +100,38 @@ public class Ayo {
 				.setCharset("UTF-8");
 	}
 
-	private static void setSDRoot(String path) {
-		if (Lang.isEmpty(path))
-			path = "genius";
-		Ayo.ROOT = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + path;
-		//Log.i("aa", "aaa-" + Ayo.ROOT);
+	public static boolean setSDRoot(String path) {
+		if (Lang.isEmpty(path)){
+			LogInner.print("sd root: " + "设置失败，路径为空");
+			return false;
+		}
+
+		if (android.os.Environment.getExternalStorageState().equals(
+				android.os.Environment.MEDIA_MOUNTED)) {
+			Ayo.ROOT = Environment.getExternalStorageDirectory().getAbsolutePath() + "" + path;
+		} else{
+			LogInner.print("sd root: " + "找不到sd卡");
+			return false;
+		}
+
 		if (!Ayo.ROOT.endsWith("/")) {
 			Ayo.ROOT += "/";
 		}
 		
 		File dir = new File(Ayo.ROOT);
 		if(dir.exists() && dir.isDirectory()){
-			LogInner.print("genius-init: work dir1-（{path}）".replace("{path}", Ayo.ROOT));
-			return;
+			LogInner.print("sd root: " + "已经有啦");
+			return true;
 		}else{
 			if(dir.mkdirs()){
-				LogInner.print("genius-init: work dir2-（{path}）".replace("{path}", Ayo.ROOT));
+				LogInner.print("sd root: " + "设置成功-" + Ayo.ROOT);
+				return true;
 			}else{
-				LogInner.print("genius-init: work dir3 failed");
+				LogInner.print("sd root: " + "目录创建失败-" + Ayo.ROOT);
+				return false;
 			}
 		}
-		//Log.i("aa", "aaa-创建成功了啊！--" + Ayo.ROOT);
+
 	}
 	
 }

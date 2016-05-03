@@ -108,6 +108,9 @@ public class Configer {
 	
 	public static <T> T getObject(String key, Class<T> clazz){
 		String json = getInstance().get(key, "{}");
+		if(json.equals("{}")){
+			return null;
+		}
 		T t = JsonUtils.getBean(json, clazz);
 		return t;
 	}

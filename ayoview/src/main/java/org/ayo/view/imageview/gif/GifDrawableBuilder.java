@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 /**
- * Builder for {@link GifDrawable} which can be used to construct new drawables
+ * Builder for {@link pl.droidsonroids.gif.GifDrawable} which can be used to construct new drawables
  * by reusing old ones.
  */
 public class GifDrawableBuilder {
@@ -98,7 +98,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(InputStream)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(InputStream)}
      *
      * @param inputStream data source
      * @return this builder instance, to chain calls
@@ -109,7 +109,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(AssetFileDescriptor)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(AssetFileDescriptor)}
      *
      * @param assetFileDescriptor data source
      * @return this builder instance, to chain calls
@@ -120,7 +120,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(FileDescriptor)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(FileDescriptor)}
      *
      * @param fileDescriptor data source
      * @return this builder instance, to chain calls
@@ -131,7 +131,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(AssetManager, String)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(AssetManager, String)}
      *
      * @param assetManager assets source
      * @param assetName    asset file name
@@ -143,7 +143,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(ContentResolver, Uri)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(ContentResolver, Uri)}
      *
      * @param uri             data source
      * @param contentResolver resolver used to query {@code uri}
@@ -155,7 +155,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(File)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(File)}
      *
      * @param file data source
      * @return this builder instance, to chain calls
@@ -166,7 +166,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(String)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(String)}
      *
      * @param filePath data source
      * @return this builder instance, to chain calls
@@ -177,7 +177,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(byte[])}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(byte[])}
      *
      * @param bytes data source
      * @return this builder instance, to chain calls
@@ -188,7 +188,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(ByteBuffer)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(ByteBuffer)}
      *
      * @param byteBuffer data source
      * @return this builder instance, to chain calls
@@ -199,7 +199,7 @@ public class GifDrawableBuilder {
     }
 
     /**
-     * Wrapper of {@link GifDrawable#GifDrawable(Resources, int)}
+     * Wrapper of {@link pl.droidsonroids.gif.GifDrawable#GifDrawable(Resources, int)}
      *
      * @param resources  Resources to read from
      * @param resourceId resource id (data source)

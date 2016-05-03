@@ -52,18 +52,11 @@ public class ApiStatus {
         }
 
         //timeline_color   timeline_it默认的，必须有
-        File colorDir = new File(appDataDirPath, Config.DIR.DEFAULT_TIMELINE_COLOR);
+        File colorDir = new File(appDataDirPath, Config.DIR.APP_DEFAULT_TOPIC);
         if(colorDir.exists() && colorDir.isDirectory()){
 
         }else{
             if(!colorDir.mkdir()) return false;
-        }
-
-        File itDir = new File(appDataDirPath, Config.DIR.DEFAULT_TIMELINE_IT);
-        if(itDir.exists() && itDir.isDirectory()){
-
-        }else{
-            if(!itDir.mkdir()) return  false;
         }
 
         return true;
@@ -88,7 +81,7 @@ public class ApiStatus {
         }
 
         //timeline_color 默认的，必须有
-        File colorDir = new File(appDataDirPath, Config.DIR.DEFAULT_TIMELINE_COLOR);
+        File colorDir = new File(appDataDirPath, Config.DIR.USER_DEFAULT_TOPIC);
         if(colorDir.exists() && colorDir.isDirectory()){
 
         }else{
@@ -98,21 +91,6 @@ public class ApiStatus {
         return true;
     }
 
-    public static String getAppColorDir(){
-        return Config.DIR.APP_DIR + "/" + Config.DIR.DEFAULT_TIMELINE_COLOR;
-    }
-
-    public static String getAppITDir(){
-        return Config.DIR.APP_DIR + "/" + Config.DIR.DEFAULT_TIMELINE_IT;
-    }
-
-    public static String getAppDir(String topicName){
-        return Config.DIR.APP_DIR + "/" + topicName;
-    }
-
-    public static String getUserDir(String topicName){
-        return Config.DIR.USER_DIR + "/" + topicName;
-    }
 
     public static String getJsonFilePath(String dataDir, String topicName, String filename){
         return Files.path.getFileInRoot(dataDir + "/" + topicName + "/" + filename);
@@ -128,11 +106,11 @@ public class ApiStatus {
     public static Integer[] getCurrentPages(String dataDir, String topicName){
         String subpath = dataDir + "/" + topicName;
 
-        if(Config.DIR.jsonCache.get(subpath) == null){
-
-        }else{
-            return Config.DIR.jsonCache.get(subpath);
-        }
+//        if(Config.DIR.jsonCache.get(subpath) == null){
+//
+//        }else{
+//            return Config.DIR.jsonCache.get(subpath);
+//        }
 
         String fullpath = Files.path.getFileInRoot(subpath);
         File dir = new File(fullpath);
@@ -163,7 +141,7 @@ public class ApiStatus {
                     }
                 });
 
-                Config.DIR.jsonCache.put(subpath, pageArr);
+                //Config.DIR.jsonCache.put(subpath, pageArr);
                 return pageArr;
             }else{
                 return null;
@@ -235,7 +213,7 @@ public class ApiStatus {
 
                                     @Override
                                     public void onOk(String savePath) {
-                                        Config.DIR.jsonCache.remove(dataDir + "/" + topicName);
+                                        //Config.DIR.jsonCache.remove(dataDir + "/" + topicName);
                                         callback.onFinish(true, HttpProblem.OK, null, null);
                                     }
 

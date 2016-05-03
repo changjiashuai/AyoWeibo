@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_common_item"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin_horizontal_common"
+        android:layout_marginRight="@dimen/margin_horizontal_common"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_qa_owner_head"
+            android:layout_width="29dp"
+            android:layout_height="29dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/head_1" />
+
+        <TextView
+            android:id="@+id/tv_qa_owner_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="6dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/gray_right_declare"
+            android:textSize="@dimen/detail_text_size"
+            android:text="马云"
+            />
+
+        <TextView
+            android:id="@+id/tv_qa_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="11dp"
+            android:background="@drawable/qa_item_tv_status_red"
+            android:textColor="@color/gray_right_declare"
+            android:textSize="@dimen/detail_text_size"
+            android:text="已读"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_qa_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="@dimen/margin_horizontal_common"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical|left"
+        android:textColor="@color/dislike_bg_normal"
+        android:textSize="15sp"
+        android:text="淘宝的路在何方？去哪儿招个安卓大牛？我该如何拯救日益衰落的阿里巴巴？"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="@dimen/margin_horizontal_common"
+        android:layout_marginBottom="12dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_ins_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/gray_right_declare"
+            android:textSize="@dimen/detail_text_size"
+            android:text="2016-01-23" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_photonumber_nor" />
+
+        <TextView
+            android:id="@+id/tv_imgs_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="11dp"
+            android:textColor="@color/gray_right_declare"
+            android:textSize="@dimen/detail_text_size"
+            android:text="3"/>
+        
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_comment_small_grey_nor" />
+
+        <TextView
+            android:id="@+id/tv_comment_nums"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="11dp"
+            android:textColor="@color/gray_right_declare"
+            android:textSize="@dimen/detail_text_size"
+            android:text="534" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/margin_horizontal_common"
+        android:layout_marginRight="@dimen/margin_horizontal_common"
+        android:background="#ededed" />
+
+</LinearLayout>

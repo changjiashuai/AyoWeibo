@@ -3,11 +3,14 @@ package org.ayo.view.imageview.gif;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import java.io.IOException;
 
 /**
  * A {@link TextView} which handles GIFs as compound drawables. NOTE:
@@ -65,8 +68,9 @@ public class GifTextView extends TextView {
      * @param defStyleRes
      * @see TextView#TextView(Context, AttributeSet, int, int)
      */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public GifTextView(Context context, AttributeSet attrs, int defStyle, int defStyleRes) {
-        super(context, attrs, defStyle);
+        super(context, attrs, defStyle, defStyleRes);
         init(attrs, defStyle, defStyleRes);
     }
 
@@ -125,7 +129,7 @@ public class GifTextView extends TextView {
         setBackgroundInternal(getGifOrDefaultDrawable(resId));
     }
 
-    //@TargetApi(Build.VERSION_CODES.LOLLIPOP) //Resources#getDrawable(int, Theme)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP) //Resources#getDrawable(int, Theme)
     @SuppressWarnings("deprecation") //Resources#getDrawable(int)
     private Drawable getGifOrDefaultDrawable(int resId) {
         if (resId == 0) {
@@ -135,16 +139,15 @@ public class GifTextView extends TextView {
         if (!isInEditMode() && "drawable".equals(resources.getResourceTypeName(resId))) {
             try {
                 return new GifDrawable(resources, resId);
-            } catch (Exception ignored) {
+            } catch (IOException | NotFoundException ignored) {
                 // ignored
             }
         }
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            return resources.getDrawable(resId, getContext().getTheme());
-//        } else {
-//            return resources.getDrawable(resId);
-//        }
-        return resources.getDrawable(resId);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            return resources.getDrawable(resId, getContext().getTheme());
+        } else {
+            return resources.getDrawable(resId);
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
