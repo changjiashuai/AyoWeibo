@@ -170,7 +170,6 @@ sourceSets {
 	    * 性能，这就不知道怎么弄了
 	    * 转屏时是否自动加载
 		* scrollToPostion(), scrollTo()
-		* 
     * [DrawerLayout](./doc/README-ayo.md)
     * [关于ActionBar](./doc/README-ayo.md)
     * [表单系列](./doc/README-ayo.md)

@@ -1,6 +1,5 @@
 <component name="libraryTable">
   <library name="design-23.1.1">
-<<<<<<< HEAD
     <ANNOTATIONS>
       <root url="jar://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.android.support/design/23.1.1/annotations.zip!/" />
     </ANNOTATIONS>
@@ -10,15 +9,8 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar://C:/dev/android/sdk/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1-sources.jar!/" />
       <root url="jar://C:/dev-tools/android/android-sdk/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1-sources.jar!/" />
     </SOURCES>
-=======
-    <CLASSES>
-      <root url="file://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.android.support/design/23.1.1/res" />
-      <root url="jar://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
->>>>>>> cf609d297315f0d6354aa253952a1e57b0b1b47d
   </library>
 </component>
