@@ -4,12 +4,12 @@
    
     <string name="ptr_demo_block_for_home">Ultra Pull to Refresh</string>
 
-    <string name="ptr_demo_block_grid_view">Contains A GridView</string>
-    <string name="ptr_demo_block_list_view">Contains A ListView</string>
-    <string name="ptr_demo_block_web_view">Contains A WebView</string>
-    <string name="ptr_demo_block_scroll_view">Contains ScrollView</string>
-    <string name="ptr_demo_block_frame_layout">Contains A FrameLayout</string>
-    <string name="ptr_demo_block_only_text_view">Contains Even A TextView</string>
+    <string name="ptr_demo_block_grid_view">GridView</string>
+    <string name="ptr_demo_block_list_view">ListView</string>
+    <string name="ptr_demo_block_web_view">WebView</string>
+    <string name="ptr_demo_block_scroll_view">ScrollView</string>
+    <string name="ptr_demo_block_frame_layout">FrameLayout</string>
+    <string name="ptr_demo_block_only_text_view">TextView</string>
     <string name="ptr_demo_block_with_list_view_and_empty_view">EmptyView and ListView</string>
     <string name="ptr_demo_block_with_list_view_and_empty_view_tip">It\' empty. \n\nClick to load data.</string>
 

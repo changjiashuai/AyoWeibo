@@ -35,30 +35,6 @@ import java.util.ArrayList;
 
 public class PtrDemoHomeFragment extends BlockMenuFragment {
 
-//    private void pushFragmentToBackStack(final Class<? extends Fragment> klass, String s){
-//
-//        FragmentContainerActivityAttacher a = new FragmentContainerActivityAttacher() {
-//            @Override
-//            protected void initFragment(FragmentManager fragmentManager, View root) {
-//                Fragment frag = null;
-//                try {
-//                    frag = klass.newInstance();
-//                } catch (java.lang.InstantiationException e) {
-//                    e.printStackTrace();
-//                } catch (IllegalAccessException e) {
-//                    e.printStackTrace();
-//                }
-//                getSupportFragmentManager().beginTransaction().replace(root.getId(), frag).commit();
-//            }
-//        };
-//        ActivityAttacher.startActivity(getActivity(), a.getClass());
-//
-//    }
-//
-//    private PtrDemoHomeFragment getContext(){
-//        return this;
-//    }
-
     @Override
     protected void addItemInfo(ArrayList<MenuItemInfo> itemInfos) {
 
