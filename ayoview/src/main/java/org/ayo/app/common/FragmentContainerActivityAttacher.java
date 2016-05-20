@@ -11,7 +11,7 @@ import genius.android.view.R;
 
 
 /**
- *  一个Activity装载一个Fragment
+ *  一个Activity装载一个Fragment，这个就是模板Activity
  *  Fragment管界面
  *
  */
@@ -39,4 +39,6 @@ public abstract class FragmentContainerActivityAttacher extends SwipeBackActivit
         initFragment(getSupportFragmentManager(), fl_root);
 
     }
+
+
 }

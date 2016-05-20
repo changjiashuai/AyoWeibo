@@ -193,11 +193,28 @@ sourceSets {
         * ScrollView
         * SwipeRefreshLayout
         * PullLayout
-    * [模板：ListView和GridView](./doc/README-ayo.md)
-    * [模板：UI主框架，PageGroupView](./doc/README-ayo.md)
-    * [模板：Tab主框架](./doc/README-ayo.md)
-    * [模板：个人页常见模式](./doc/README-ayo.md)
-
+	* 模板：
+		* 模板基础框架：
+			* AyoActivity框架，基于AppCompatActivity，原生版，需声明
+				* AyoActivity
+				* AyoSwipeBackActivity：自带滑动返回
+					* FragmentContainerActivity：只能放一个Fragment的模板Activity
+				* AyoFragment
+			* Attacher框架，基于事先声明的Activity，免声明
+				* AyoActivityAttacher
+				* AyoSwipeBackActivityAttacher：继承SwipeBackActivityAttacherr
+					* FragmentContainerActivityAttacher
+				* AyoFragment：支持获取Attacher实例，如果fragment不是处于attacher下，会抛出异常
+			* 每个应用应该有一套自己的BaseActivity，参考ayoweibo的ui.base
+		* 列表：
+			* ListView的列表模板：BaseListViewFragment，过时，基于PullToRefresh
+			* GridView的列表模板：BaseGridViewFragment，过时，基于PullToRefresh
+			* RecylerView的模板：AyoRecyclerViewFragment，基于ultra pullrefresh，上拉加载效果需完善
+		* 其他：
+			* PageGroupView：主页框架，适合主页展示N个Fragment的形式
+			* AyoWebViewFragment：带一个进度条，setJsInfomation回调支持js调用java
+		
+			
 ####
 * UIFramework：用户提示
     * [原生Dialog](./doc/n_dialog_origin.md)
