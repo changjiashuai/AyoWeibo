@@ -1,250 +1,330 @@
-# AyoHttpWeiboDemo
-AyoHttp框架的demo，本意是提供一套顶层框架，用来任意配置底层实现，如okhttp，URLConnection，volly等，
-但现在各方面还都不够完善，demo也不够完善
+Ayo2016
+========================
 
-##########
-    2016/4/14有感而发
-    给你们讲讲我写这个框架的感受，让你们引以为戒，http作为天天用到的一个东西，底层不懂，这没关系，还可以用，
-    要封装个好用的框架，也封装不到retrofit那个层次，绕来绕去把自己都绕进去了，
-    底层和架构都不追求了，只追求给用户提供个友好的接口吧，最后发现对外接口也复杂，不得不写文档，
-    文档说来说去也说不清楚，
-    最后说http不是我的强项吧，应该写个别的库，发现别的技术点也没有深入理解的
-    所以学习之路，还是任重而道远，下一步就是深入研究各个技术点，以前是横向发展，以后要纵向发展
-    以前的目标是会用，以后的目标是能写
-
-##########
-* 用来测试的接口提供者：
-    * 微博：http://open.weibo.com/wiki/%E5%BE%AE%E5%8D%9AAPI
-    * 天狗云美女接口：http://www.tngou.net/doc/gallery
-    * 聚合数据：https://www.juhe.cn/docs
+##前言：这是什么
 
 
-#########
-* 后期工作：
-    * json库分离出来吧，让http库不依赖json相关的东西
-    * 参考retrofit和okhttp，想办法支持RxJava
-    * 架构可能要重整
-    * 上传文件没测试，post file和post form两种形式
-    * 下载文件还没实现啊，XUtils都他妈给删了
-    * flag和cancel相关的实现
-    * 缓存需要在这里考虑吗？
-    * 三大超时时间的选择
-    * 重发机制，主要是volly（有还是没有）
-    * 对put，head，delete等的支持
+##如何往项目里添加你的代码
 
-#########
-* 注意：
-    * 要想看微博相关接口，必须使用weibosdk/doc/debug.keystore来打调试包，你得把C:/Users/xx/.android/debug.keystore换成这个
-    * 要想看微博相关接口，先通过微博授权，就是主页第二个按钮，用微博登录一下，这就是为什么要替换dubug.keystore，这其实是微博官方demo的keystore
+* 分2步：
+    * 配置你的个人页入口：在Config类中搜`菜单1：笔记`，配置你自己的page和菜单列表
+    * 开始写你的代码
+        * 如果要使用Activity代理框架，请移步：[Activity代理框架](./doc/doc-ayoview-acagent.md)
+        * 如果不想用Activity代理框架，请参考org.ayo.app.orig
+        * 如果都不感兴趣，直接写你的Activity就行
 
-###1 怎么用
 
-####第0步 初始化http库
-
-#####
-
-传入个全局Context，你懂的 `AyoHttp.init(this)`
-
-####第1步 定义顶层json业务对象
-
-#####
-
-你得定义个ResponseModel的子类，对应的是你要解析的json，把状态信息，失败信息，业务数据分离出来
-
-例如，微博开放api的json格式是：
-成功时：
-```json
-{
-    "statuses": [
-        {
-            "created_at": "Tue May 31 17:46:55 +0800 2011",
-            "id": 11488058246,
-            "text": "求关注。"，
-            "user": {
-                "id": 1404376560,
-                "screen_name": "zaku",
-                "name": "zaku",
-            }
-        },
-        ..
-    ],
-    "previous_cursor": 0,
-    "next_cursor": 11488013766,
-    "total_number": 81655
-}
-```
-
-错误时：
-```json
-{
-    "error": "source paramter(appkey) is missing",
-    "error_code": 10006,
-    "request": "/2/statuses/public_timeline.json"
-}
-```
-
-* 简单分析一下：
-    * 成功时，返回的json里就只有业务数据，没有状态信息，原则就是没有就是最好的结果
-    * 失败时，返回在哪儿发生了什么错误，错误代号
-    * 所以能知道，没有error或者error_code字段时，就是成功状态
-
-对应的ResponseModel是：
+####
+__注册你的个人目录__
 ```java
-public class WeiboResponseModel extends ResponseModel {
-
-    public String error;
-    public int error_code;
-    public String request;
-
-    public String raw;
-
-    @Override
-    public boolean isOk() {
-        return error == null || error.equals("");
+sourceSets {
+    main {
+        jniLibs.srcDirs = ['libs']
+        java.srcDirs = ['src/main/java',
+                        'src/main/java_ayosdk',
+                        'src/main/java_ayoview',
+                        'src/main/java_issues',
+                        'src/main/java_opensource',
+                        'src/main/java_seven',
+                        'src/main/java_snowy',
+                        'src/main/lib_particle']
     }
-
-    @Override
-    public int getResultCode() {
-        return error_code;
-    }
-
-    @Override
-    public String getFailMessage() {
-        return error;
-    }
-
-    @Override
-    public String getResult() {
-        return raw;
-    }
-}
 ```
 
-注意这里面多了个raw字段，这个代表原始json串，这个原始json串需要被传进来，下一步还要被转换为业务对象
-加这个字段的原因是业务数据在这里无法作为ResponseModel的一个字段通过json解析进来，所以手动传进来
+####
+* 务必注意：
+    * 写之前先过一遍现有的库，避免重复引入，省的干重复的事
+    * 尽量给个文档，文档目录在README.md
+	* 图片都放在七牛的本人账号下，空间cowthan1103，域名```http://7xo0ny.com1.z0.glb.clouddn.com/```
 
 
-####第2步 定义BaseHttpDispatcher，指定如何解析json，如何解析ResponseModel，并调用BaseHttpCallback的相关接口
+####
+* 日程安排
+    * 2016.03.28 完善ui lib
+	
+	
+	
+##目录
 
-#####
+* 基础设施:
+    * [Ayo库怎么用](./doc/doc-doc.md)
+    * [常用工具类](./doc/doc-common.md)
+	* [Activity免声明框架：AyoActivity，多模块开发]
+	    * [安卓Activity，Fragment基础教程]
+	    * [Activity状态保存](./doc/doc-state.md)
+	    * [AyoActivity思路和教程]
+		* [和Fragment的配合: getActivity()得不到attacher问题解决]
+		* [多模块开发研究--加载，资源文件的加载]
+		* [插件化发布研究]
+		* [热补丁]
+    * [控件注入](./doc/doc-inject.md)
+        * [ButterKnife研究]
+        * [dagger研究]
+    * [日志系统](./doc/doc-log.md)
+        * [JLog：小众化]
+        * [Logger：大众化]
+        * [崩溃日志]
+        * [用户行为日志]
+    * [IO操作](./doc/doc-io.md)
+	    * [SharedPrefernce]
+		* [安卓文件操作：SD卡，上下文目录，assets，raw，res资源]
+		* [流：原生]
+		* [流：Okio]
+    * [http请求](./doc/doc-http.md)
+	    * [AyoHttp框架]
+		* [底层：UrlConnection，OKHttp]
+		* [XUtils：http请求，下载文件，上传文件]
+        * [Volly教程和源码解析](./doc/doc-volly.md)
+	    * [retrofit教程和源码解析]
+	    * [webview参考手册，js桥]
+	    * [react-native研究]
+	* [json解析]
+	    * [原生json和泛型问题]
+		* [Bean嵌套，Map，List，"1,2,3,4"的解析]
+	    * [FastJson]
+	    * [Gson]
+	    * [AyoJson：顶层框架]
+	* [xml解析](./doc/doc-xml.md)
+	    * [原生]
+	    * [第三方库，orm方式解析]
+    * [网络图片加载](./doc/doc-onlineimage.md)
+	    * [两层缓存]
+	    * [Ayo-Vangoph]
+	    * [UniversalImageDownloader]
+		* [Fresco]
+	    * [Picasso]
+    * [多线程](./doc/doc-async.md)
+		* [安卓消息队列机制]
+	    * [java多线程]
+		* [RxJava]
+	* [多进程]
+	    * [怎么用，何时用，怎么证明开了多个进程，多个进程之间的关系]
+		* [极光，友盟等的单进程是咋回事，有何意义]
+		* [我们啥时能用上]
+		* [不死服务]
+    * [缓存](./doc/doc-cache.md)
+        * [SharedPreference封装]
+        * [简单版：Json配合SharedPreference]
+        * [LruCache]
+    * [数据库](./doc/doc-database.md)
+        * [原生SqlHelper用法]
+        * [原生 + RxJava：square的sqlbrite]
+        * [orm：XUtils]
+        * [orm：greendao]
+        * [orm：ormlite]
+    * [事件总线：EventBus](./doc/doc-eventbus.md)
+        * [EventBus]
+        * [otto]
+    * [推送]
+        * [mqtt：自己搭个服务器，自己封装sdk]
+        * [极光等第三方推送]
 
-```java
-public class WeiboJsonDispatcher<T> extends JsonResponseDispatcher {
-    /**
-     * @param elementClass
-     */
-    public WeiboJsonDispatcher(Class elementClass) {
-        super(elementClass);
-    }
+    * [binder]
+        * [binder机制]
+        * [aidl:http://android.blog.51cto.com/268543/537684/]
 
-    @Override
-    public ResponseModel parseResponseToModel(String response, Class clazz) {
-        WeiboResponseModel r = JsonUtils.getBean(response, WeiboResponseModel.class);
-        r.raw = response;
-        return r;
-    }
-}
-```
-
-这里要注意的是，JsonResponseDispatcher其实可以直接处理如下json形式：
-```json
-{
-    code: 0,
-    message: "错误信息,成功则空",
-    result:{
-        所有业务字段放在这里
-    }
-}
-```
-
-BaseHttpDispatcher的两个接口：
-```java
-public abstract <T> void process(String flag, AyoResponse resp, BaseHttpCallback<T> callback, Class<? extends ResponseModel> clazz);
-public abstract ResponseModel parseResponseToModel(String response, Class<? extends ResponseModel> clazz);
-```
-
-process()接口的任务是解析resp中的data字符串（可能是json，xml，html），并根据各种情况来调用callback
-parseResponseToModel()的任务是把原始字符串转为顶层业务对象，里面应该包含成功失败信息，成功时还有业务字段
-
-
-####第3步 定制你的接口规则
-
-#####
-
-```java
-//每个接口都需要传入两个header：os和version
-//以WeiboResonseModel作为统一的顶层业务bean，当然也可以每个接口有不同定制
-//HttpWorkerUseOkhttp表示使用okhttp作为底层实现
-
-public static AyoRequest request(){
-    AyoRequest r = AyoRequest.newInstance()
-            .header("os", "android")      //可选
-            .header("version", "1.0.0")   // 可选
-            .myResponseClass(WeiboResponseModel.class)  //必须，且理论上应该项目唯一
-                    //.worker(new HttpWorkerUseXUtils(true)); //必须
-                    //.worker(new HttpWorkerUseOkhttp()); //必须
-            .worker(new HttpWorkerUseOkhttp()); //必须
-    return r;
-}
-```
-
-####第4步 发起请求，处理响应
-
-#####
-
-```java
-public static void getPublicTimelines(String flag, BaseHttpCallback<ResponseTimeline> callback){
-    WeiboApi.request().flag(flag)
-            .url("https://api.weibo.com/2/statuses/public_timeline.json")
-            .method("get")
-            .param("access_token", AccessTokenKeeper.readAccessToken(App.app).getToken())
-            .param("count", "50")
-            .param("page", "1")
-            .param("base_app", "0")
-            .go(new WeiboJsonDispatcher(ResponseTimeline.class), callback);
-}
-```
-
-go()就是发起异步请求，go了之后要考虑的就是返回之后的问题：
-new WeiboJsonDispatcher(ResponseTimeline.class)表示返回的是json，把json转成WeiboResponseModel之后，
-如果失败，回调callback的失败接口
-如果成功，把业务字段转成ResponseTimeline，再回调callback的成功接口
-这么一分析，myResponseClass(WeiboResponseModel.class)这个方法似乎不应该是Request提供的，这是响应相关的事
-
-
-响应相关的应该都给Dispatcher，并且理想情况是项目唯一，可以统一配置：
-顶层响应bean
-callback
-json解析器
-xml解析器
-html解析器
-
-```java
-WeiboApi.getPublicTimelines("公共微博", new BaseHttpCallback<ResponseTimeline>() {
-        @Override
-        public void onFinish(boolean isSuccess, HttpProblem problem, ResponseModel resp, ResponseTimeline responseTimeline) {
-            if (isSuccess) {
-                //成功，访问responseTimeline里的数据，此时不要依赖于resp了
-            } else {
-                //失败，访问ResponseModel里的错误信息，
-                //HttpProblem对应几种错误情况
-                Toast.makeText(App.app, resp.getFailMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    });
-}
-```
-
-* HttpProblem对应几种错误情况
-    * OK，成功
-    * OFFLINE，手机没联网
-    * SERVER_ERROR，http请求错误，状态码肯定不是[200, 300)，或者连接超时了，网不好时，服务器出问题时发生，需要考虑如何给用户提示
-    * DATA_ERROR，http返回状态码是200到300，但本地处理返回数据时发生异常，如json转换时的类型对应问题，生产环境不应该发生这个问题
-    * LOGIN_FAIL，http返回状态码是200到300，但业务逻辑出错，如发评论但有违禁词，看文章但已删除等，这个错误情况会经常发生
-    * UNKNOWN，不知道出什么错了，这个情况竟然会有可能发生，我还没找到原因
+    * [IM通信]
+        * [openfire]
+        * [蘑菇街开源IM框架]
+        * [自定义聊天组件：基于融云]
+    * [加密解密](./doc/doc-crypt.md)
+    * [手机功能接口]
+        * [读取联系人，短信]
+        * [拦截短信]
+        * [解锁屏幕，保持屏幕点亮等]
+        * [各种广播receiver]
 
 
+####
+* UIFramework：控件
+    * [Activity]
+        * 生命周期
+        * onSaveInstance
+        * 连续打开多个Activity
+        * SingleTask：不能作为splash使用
+        * 横竖屏切换
+        * ActionBar
+        * manifest配置研究
+        * 主题研究
+    * [Fragment应用及其通信](./doc/v_fragment.md)
+    * [状态栏控制](./doc/README-ayo.md)
+    * [Drawable系列](./doc/v_drawable.md)
+    * [TextView系列](./doc/v_textview.md)
+    * [EditText系列](./doc/v_textview.md)
+    * [ImageView系列](./doc/v_imageview.md)
+	    * 这部分应该基于Fresco的SimpleDraweeView构建，如果你信任fresco的话
+		* PhotoView
+		* Gif
+		* webP
+		* 圆角，圆形
+    * [ProgressView系列](./doc/README-ayo.md)
+    * [View切换系列](./doc/README-ayo.md)
+    * [ListView手册和源码分析](./doc/README-ayo.md)
+        * 普通
+        * 上下拉及定制
+        * 滑动删除和动画
+        * sticky或者pinned
+        * Item Type
+        * drag
+    * [RecyclerView和ListView](./doc/README-ayo.md)
+	    * 性能，这就不知道怎么弄了
+	    * 转屏时是否自动加载
+		* scrollToPostion(), scrollTo()
+    * [DrawerLayout](./doc/README-ayo.md)
+    * [关于ActionBar](./doc/README-ayo.md)
+    * [表单系列](./doc/README-ayo.md)
+        * 输入框
+        * 下拉框：原地，底部，中间
+        * WheelView
+        * 各种picker
+        * 单选
+        * 复选
+        * Lable + Input 组合
+        * 校验
+    * [布局系列](./doc/README-ayo.md)
+        * LinearLayout，Relativelayout，FrameLayout
+        * AutoLayout
+        * PercentageLayout
+        * FlowLayout
+        * WaterFallLayout
+        * DrawerLayout
+        * SwipeLayout
+        * SwipeBackLayout
+        * ScrollView
+        * SwipeRefreshLayout
+        * PullLayout
+	* 模板：
+		* 模板基础框架：
+			* AyoActivity框架，基于AppCompatActivity，原生版，需声明
+				* AyoActivity
+				* AyoSwipeBackActivity：自带滑动返回
+					* FragmentContainerActivity：只能放一个Fragment的模板Activity
+				* AyoFragment
+			* Attacher框架，基于事先声明的Activity，免声明
+				* AyoActivityAttacher
+				* AyoSwipeBackActivityAttacher：继承SwipeBackActivityAttacherr
+					* FragmentContainerActivityAttacher
+				* AyoFragment：支持获取Attacher实例，如果fragment不是处于attacher下，会抛出异常
+			* 每个应用应该有一套自己的BaseActivity，参考ayoweibo的ui.base
+		* 列表：
+			* ListView的列表模板：BaseListViewFragment，过时，基于PullToRefresh
+			* GridView的列表模板：BaseGridViewFragment，过时，基于PullToRefresh
+			* RecylerView的模板：AyoRecyclerViewFragment，基于ultra pullrefresh，上拉加载效果需完善
+		* 其他：
+			* PageGroupView：主页框架，适合主页展示N个Fragment的形式
+			* AyoWebViewFragment：带一个进度条，setJsInfomation回调支持js调用java
+		
+			
+####
+* UIFramework：用户提示
+    * [原生Dialog](./doc/n_dialog_origin.md)
+    * [Dialog：Alert系列](./doc/README-ayo.md)
+    * [WheelPicker：列表选择](./doc/README-ayo.md)
+    * [DatePicker：日期选择](./doc/README-ayo.md)
+    * [ActionSheet](./doc/README-ayo.md)
+    * [Popup](./doc/README-ayo.md)
+    * [Toast](./doc/README-ayo.md)
+    * [Snackbar](./doc/README-ayo.md)
+    * [Headup](./doc/README-ayo.md)
+    * [Notification](./doc/README-ayo.md)
+    * [声音，LED，震动，亮屏](./doc/README-ayo.md)
+    * [其他](./doc/README-ayo.md)
+
+####
+* UIFramework：动画
+    * [Activity切换动画](./doc/README-ayo.md)
+    * [属性动画](./doc/README-ayo.md)
+    * [缓动函数--daimajia ease](./doc/README-ayo.md)
+    * [spring rebound](./doc/README-ayo.md)
+    * [Transition](./doc/README-ayo.md)
+    * [布局](./doc/README-ayo.md)
+    * [path动画]
+
+####
+* UIFramework：绘图
+    * [OpenGL基础](./doc/README-ayo.md)
+    * [onDraw里都能干什么](./doc/README-ayo.md)
+
+####
+* UIFramework：自定义控件
+    * [控件增强](./doc/README-ayo.md)
+    * [控件组合](./doc/README-ayo.md)
+    * [自定义布局](./doc/README-ayo.md)
+
+####
+* UIFramework：onTouch详解
+    * [onTouch基础](./doc/README-ayo.md)
+    * [手势应用](./doc/README-ayo.md)
+    * [ScrollView里的onTouch](./doc/README-ayo.md)
+    * [ViewPager里的onTouch](./doc/README-ayo.md)
+    * [常见冲突](./doc/README-ayo.md)
+    * [应用场景](./doc/README-ayo.md)
+
+####
+* 安卓res详解
+    * [res下几个目录到底怎么回事](./doc/README-2016.md)
+    * [values目录](./doc/README-2016.md)
+    * [主题和style](./doc/README-2016.md)
+    * [适配问题](./doc/README-2016.md)
+    * [资源文件切换问题：换肤](./doc/README-2016.md)
+
+####
+* 单元测试
+    * [单元测试怎么写](./doc/README-2016.md)
+
+####
+* [常见问题和代码段](./doc/README-issue.md)
+    * [ScrollView嵌套ViewPager冲突](./doc/README-issue.md)
+    * [ScrollView嵌套ListView或GridView](./doc/README-issue.md)
+    * [小键盘管理](./doc/README-issue.md)
+    * [三星手机拍照问题](./doc/README-issue.md)
+    * [魅族的UI适配](./doc/README-issue.md)
+    * [windowIsTranlusent问题](./doc/README-issue.md)
+    * [windowIsTranslusent为true导致Activity无法横竖切换](./doc/README-issue.md)
+	* [Java单例模式]
+
+####
+* 基于git的work flow
+    * [git教程](./doc/README-2016.md)
+
+####
+* 打包编译
+    * 从gradle说起
+    * 库管理，上传module的jcenter
+    * 多渠道打包
+    * [热补丁]
+
+####
+* 杂七杂八
+    * [MVP模式](./doc/README-2016.md)
+    * [基于状态管理的复杂业务逻辑如何实现？](./doc/README-2016.md)
+    * [基于状态管理的复杂业务逻辑如何实现？](./doc/README-realthing.md)
 
 
+####
+* 其他第三方常用库介绍
+    * 统计：友盟统计
+    * 更新：友盟自动更新
+    * 反馈：友盟反馈
+    * 第三方登录
+    * 第三方分享
+    * 七牛：图片云服务
+    * 图片选择器
+    * 自定义相机
+    * 视频播放：第三方平台依赖，优酷
+    * 视频播放：第三方平台依赖，乐视
+    * 视频播放：视频自己管理
+    * 录像
+    * 音频播放器
+    * 自定义app内置浏览器
+    * 支付宝
 
 
+####
+* 项目管理
+    * 项目的任务分级：
+        * 简单型：如画个ListView，画个Item，改改界面布局等
+        * 长期型：一般由主导人员完成，如优化底层http，抢单实现，订单管理实现
+        * 讨论型：未定的东西，一般会转化为长期型
+        * 缺陷型：大多数是简单型，下个版本就必须随着上线的东西
+        * 技术难点型：需要先调研，再讨论，再分解为简单和长期

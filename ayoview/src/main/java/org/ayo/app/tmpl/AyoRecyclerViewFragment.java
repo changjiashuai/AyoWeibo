@@ -71,7 +71,6 @@ public abstract class AyoRecyclerViewFragment<T> extends Fragment {
         mRecyclerView = (RecyclerView) root.findViewById(R.id.recyclerview);
         //使RecyclerView保持固定的大小,这样会提高RecyclerView的性能
         mRecyclerView.setHasFixedSize(true);
-
         //设置LayoutManager
         RecyclerView.LayoutManager layoutManager = getLayoutManager();
         mRecyclerView.setLayoutManager(layoutManager);

@@ -17,12 +17,13 @@ import com.ayo.sample.zsdk.ToolkitSampleActivity;
 import com.ayoview.notifysample.DialogDemoActivity;
 import com.ayoview.sample.deepmind.DemoCustomMenuActivity;
 import com.ayoview.sample.drawable.DemoDrawableActivity;
+import com.ayoview.sample.tmpl_listview.TmplListActivity;
 import com.ayoview.sample.tmpl_pagegroup.DemoMainActivity;
 import com.ayoview.sample.tmpl_recyclerview.DemoRecyclerActivity;
+import com.ayoview.sample.ultra.pulltorefresh.UltraDemoActivityAttacher;
 import com.ayoview.sample.zbutton.ButtonDemoActivity;
 import com.ayoview.sample.zsimplepromt.SvProgressHudDemoActivity;
 import com.ayoview.sample.ztextview.TextViewDemoActivity;
-import com.ayoview.sample.tmpl_listview.TmplListActivity;
 import com.cowthan.sample.menu.Leaf;
 import com.cowthan.sample.menu.Menu;
 import com.cowthan.sample.menu.MenuItem;
@@ -106,7 +107,7 @@ public class Config{
                 menuItem3.addLeaf(new Leaf("View Flipper系列", "", null));
                 menuItem3.addLeaf(new Leaf("表单系列", "", null));
                 menuItem3.addLeaf(new Leaf("布局", "", LayoutDemoActivity.class));
-                menuItem3.addLeaf(new Leaf("列表", "", null));
+                menuItem3.addLeaf(new Leaf("列表", "", UltraDemoActivityAttacher.class));
                 menuItem3.addLeaf(new Leaf("自定义Drawable和View", "", DemoCustomMenuActivity.class));
             }
 
