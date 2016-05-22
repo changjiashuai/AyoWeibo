@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ayoask" />
             <option value="$PROJECT_DIR$/ayodatabase" />
             <option value="$PROJECT_DIR$/ayohttp" />
             <option value="$PROJECT_DIR$/ayoimage_sample" />

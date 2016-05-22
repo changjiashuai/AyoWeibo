@@ -75,17 +75,15 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/libs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
-<<<<<<< HEAD
-=======
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/ndk" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/proguard" />
->>>>>>> 7ee536c555364dc05043f3f87853dc828933101f
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

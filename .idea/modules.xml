@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AyoWeibo.iml" filepath="$PROJECT_DIR$/AyoWeibo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ayoask/ayoask.iml" filepath="$PROJECT_DIR$/ayoask/ayoask.iml" />
       <module fileurl="file://$PROJECT_DIR$/ayodatabase/ayodatabase.iml" filepath="$PROJECT_DIR$/ayodatabase/ayodatabase.iml" />
       <module fileurl="file://$PROJECT_DIR$/ayohttp/ayohttp.iml" filepath="$PROJECT_DIR$/ayohttp/ayohttp.iml" />
       <module fileurl="file://$PROJECT_DIR$/ayoimage_sample/ayoimage_sample.iml" filepath="$PROJECT_DIR$/ayoimage_sample/ayoimage_sample.iml" />
