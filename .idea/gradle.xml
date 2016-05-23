@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/weibosdk" />
           </set>
         </option>
+<<<<<<< HEAD
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -47,6 +48,8 @@
             <option value="$PROJECT_DIR$/weibosdk" />
           </set>
         </option>
+=======
+>>>>>>> 9ecb7ae4abba7fdcdbe329ef5da26ebca8923a18
       </GradleProjectSettings>
     </option>
   </component>
