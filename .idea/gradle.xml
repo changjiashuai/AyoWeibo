@@ -5,12 +5,13 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="C:\dev\android\studio\gradle\gradle-2.10" />
+        <option name="gradleHome" value="C:\dev\android\studio-2-preview4\gradle\gradle-2.8" />
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ayoask" />
             <option value="$PROJECT_DIR$/ayodatabase" />
             <option value="$PROJECT_DIR$/ayohttp" />
             <option value="$PROJECT_DIR$/ayoimage_sample" />
@@ -30,6 +31,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/ayoask" />
             <option value="$PROJECT_DIR$/ayodatabase" />
             <option value="$PROJECT_DIR$/ayohttp" />
             <option value="$PROJECT_DIR$/ayoimage_sample" />
@@ -42,7 +44,6 @@
             <option value="$PROJECT_DIR$/sample" />
             <option value="$PROJECT_DIR$/umeng" />
             <option value="$PROJECT_DIR$/vedio-player-manager" />
-
             <option value="$PROJECT_DIR$/weibosdk" />
           </set>
         </option>
