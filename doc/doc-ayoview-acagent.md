@@ -45,7 +45,7 @@ __Manifest中的声明：__
 ```Java
 <activity
             android:name="com.cowthan.sample.MainActivity"
-            android:configChanges="orientation|keyboardHidden|navigation"
+            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             >
@@ -58,28 +58,28 @@ __Manifest中的声明：__
 
         <activity
             android:name="org.ayo.app.base.TmplActivityStandard"
-            android:configChanges="orientation|keyboardHidden|navigation"
+            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="standard"
             android:theme="@style/AyoTransparentTheme" />
 
         <activity
             android:name="org.ayo.app.base.TmplActivitySingleTask"
-            android:configChanges="orientation|keyboardHidden|navigation"
+            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
             android:theme="@style/AyoTransparentTheme" />
 
         <activity
             android:name="org.ayo.app.base.TmplActivitySingleTop"
-            android:configChanges="orientation|keyboardHidden|navigation"
+            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleTop"
             android:theme="@style/AyoTransparentTheme" />
 
         <activity
             android:name="org.ayo.app.base.TmplActivitySingleInstance"
-            android:configChanges="orientation|keyboardHidden|navigation"
+            android:configChanges="orientation|screenSize|keyboardHidden|navigation"
             android:screenOrientation="portrait"
             android:launchMode="singleInstance"
             android:theme="@style/AyoTransparentTheme" />

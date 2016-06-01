@@ -17,7 +17,7 @@ import org.ayo.http.R;
 import org.ayo.lang.JsonUtils;
 import org.ayo.lang.Lang;
 import org.ayo.view.layout.FlowLayout;
-import org.ayo.view.recycler.MyViewHolder;
+import org.ayo.view.recycler.adapter.AyoViewHolder;
 import org.ayo.view.recycler.SimpleRecyclerAdapter;
 import org.ayo.weibo.App;
 import org.ayo.weibo.model.timeline.AyoTimeline;
@@ -37,14 +37,14 @@ public class AyoTimeLineAdapter extends SimpleRecyclerAdapter<AyoTimeline> {
     }
 
     @Override
-    protected MyViewHolder newView(ViewGroup viewGroup, int viewType) {
+    protected AyoViewHolder newView(ViewGroup viewGroup, int viewType) {
         View v = View.inflate(App.app, R.layout.item_timeline, null);
-        MyViewHolder holder = new MyViewHolder(v);
+        AyoViewHolder holder = new AyoViewHolder(v);
         return holder;
     }
 
     @Override
-    protected void bindView(MyViewHolder holder, final AyoTimeline bean, int position) {
+    protected void bindView(AyoViewHolder holder, final AyoTimeline bean, int position) {
 
         Log.e("iiiiii--thumbnail_pic", JsonUtils.toJson(bean));
 

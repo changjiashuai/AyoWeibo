@@ -1,7 +1,6 @@
 package com.ayoview.sample.tmpl_pagegroup;
 
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.cowthan.sample.R;
 
@@ -20,16 +19,7 @@ public class DemoMainActivity extends ActivityAttacher {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_demo_pagegroup_main);
 
-        final Thread.UncaughtExceptionHandler u = Thread.getDefaultUncaughtExceptionHandler();
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-            @Override
-            public void uncaughtException(Thread thread, Throwable throwable) {
-                throwable.printStackTrace();
-                u.uncaughtException(thread, throwable);
-            }
-        });
-
-        pgv_pagers = (PageGroupView) findViewById(R.id.pgv_pagers);
+        pgv_pagers = findViewById(R.id.pgv_pagers);
 
         PageIndicatorInfo[] indicatorInfos = new PageIndicatorInfo[]{
                 new PageIndicatorInfo(R.mipmap.ic_tab_news_1, R.mipmap.ic_tab_news_2, "资讯"),
@@ -64,12 +54,7 @@ public class DemoMainActivity extends ActivityAttacher {
 
         pgv_pagers.attach(this.getActivity(), indicatorInfos, pages, uiMode, 1);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                pgv_pagers.setChecked(4);
-            }
-        }, 3000);
+        pgv_pagers.setChecked(4);
     }
 
     @Override

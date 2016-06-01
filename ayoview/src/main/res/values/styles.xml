@@ -39,7 +39,7 @@
     </style>-->
 
     <style name="Animation.Activity.Translucent.Style" parent="@android:style/Animation.Translucent">
-       <!-- <item name="android:windowEnterAnimation">@anim/base_slide_right_in</item>
+       <!--<item name="android:windowEnterAnimation">@anim/base_slide_right_in</item>
         <item name="android:windowExitAnimation">@anim/base_slide_right_out</item>-->
     </style>
 

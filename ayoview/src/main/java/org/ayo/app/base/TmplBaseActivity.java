@@ -43,6 +43,7 @@ public abstract class TmplBaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         try {
             onCreateSilence(savedInstanceState);
         }catch (Exception e){
@@ -657,7 +658,7 @@ public abstract class TmplBaseActivity extends AppCompatActivity {
     @Override
     public void onWindowAttributesChanged(WindowManager.LayoutParams params) {
         super.onWindowAttributesChanged(params);
-        attacher.onWindowAttributesChanged(params);
+        //attacher.onWindowAttributesChanged(params);
     }
 
     @Override

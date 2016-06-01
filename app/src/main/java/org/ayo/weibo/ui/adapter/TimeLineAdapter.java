@@ -15,7 +15,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.ayo.http.R;
 import org.ayo.lang.JsonUtils;
-import org.ayo.view.recycler.MyViewHolder;
+import org.ayo.view.recycler.adapter.AyoViewHolder;
 import org.ayo.view.recycler.SimpleRecyclerAdapter;
 import org.ayo.weibo.App;
 import org.ayo.weibo.model.Timeline;
@@ -33,14 +33,14 @@ public class TimeLineAdapter extends SimpleRecyclerAdapter<Timeline> {
     }
 
     @Override
-    protected MyViewHolder newView(ViewGroup viewGroup, int viewType) {
+    protected AyoViewHolder newView(ViewGroup viewGroup, int viewType) {
         View v = View.inflate(App.app, R.layout.item_timeline, null);
-        MyViewHolder holder = new MyViewHolder(v);
+        AyoViewHolder holder = new AyoViewHolder(v);
         return holder;
     }
 
     @Override
-    protected void bindView(MyViewHolder holder, Timeline bean, int position) {
+    protected void bindView(AyoViewHolder holder, Timeline bean, int position) {
 
         Log.e("iiiiii--thumbnail_pic", JsonUtils.toJson(bean));
         if(bean.retweeted_status != null){

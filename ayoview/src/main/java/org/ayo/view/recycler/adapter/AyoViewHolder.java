@@ -1,4 +1,4 @@
-package org.ayo.view.recycler;
+package org.ayo.view.recycler.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
@@ -7,8 +7,8 @@ import android.view.View;
 /**
  * Created by Administrator on 2016/2/18.
  */
-public class MyViewHolder extends RecyclerView.ViewHolder {
-    public MyViewHolder(View itemView) {
+public class AyoViewHolder extends RecyclerView.ViewHolder {
+    public AyoViewHolder(View itemView) {
         super(itemView);
         viewHolder = new SparseArray<View>();
 		view = itemView;
@@ -35,14 +35,14 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 			}
 		}
 
-		public static MyViewHolder getViewHolder(View view) {
+		public static AyoViewHolder getViewHolder(View view) {
 			Object viewTag = view.getTag();
-			if (viewTag != null && viewTag instanceof MyViewHolder) {
-				return (MyViewHolder) viewTag;
+			if (viewTag != null && viewTag instanceof AyoViewHolder) {
+				return (AyoViewHolder) viewTag;
 			} else {
-				viewTag = new MyViewHolder(view);
+				viewTag = new AyoViewHolder(view);
 				view.setTag(viewTag);
-				return (MyViewHolder) viewTag;
+				return (AyoViewHolder) viewTag;
 			}
 		}
 

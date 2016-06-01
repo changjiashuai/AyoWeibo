@@ -10,7 +10,7 @@ import com.ayoview.sample.tmpl_listview.TmplBean;
 import com.cowthan.sample.R;
 
 import org.ayo.imageloader.VanGogh;
-import org.ayo.view.recycler.MyViewHolder;
+import org.ayo.view.recycler.adapter.AyoViewHolder;
 import org.ayo.view.recycler.SimpleRecyclerAdapter;
 
 import java.util.List;
@@ -29,15 +29,15 @@ public class ArticleAdapter2 extends SimpleRecyclerAdapter<TmplBean> {
 
 
 	@Override
-	protected MyViewHolder newView(ViewGroup viewGroup, int viewType) {
+	protected AyoViewHolder newView(ViewGroup viewGroup, int viewType) {
 		View v = View.inflate(mContext, R.layout.item_tmpl_item_template, null);
-		MyViewHolder holder = new MyViewHolder(v);
+		AyoViewHolder holder = new AyoViewHolder(v);
 
 		return holder;
 	}
 
 	@Override
-	protected void bindView(MyViewHolder holder, TmplBean bean, int position) {
+	protected void bindView(AyoViewHolder holder, TmplBean bean, int position) {
 		TextView tv_title = (TextView) holder.findViewById(R.id.tv_title);
 		ImageView iv_photo = (ImageView) holder.findViewById(R.id.iv_photo);
 

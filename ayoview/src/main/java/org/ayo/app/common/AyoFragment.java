@@ -22,13 +22,17 @@ public abstract class AyoFragment extends Fragment {
 	 */
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+							 Bundle savedInstanceState) {
 		rootView = inflater.inflate(getLayoutId() , container, false);
 		onCreateView(rootView);
 		return rootView;
 	}
 
 	protected <T> T findViewById(int id){
+		return (T) rootView.findViewById(id);
+	}
+
+	protected <T> T id(int id){
 		return (T) rootView.findViewById(id);
 	}
 

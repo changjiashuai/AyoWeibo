@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.ayo.http.R;
-import org.ayo.view.recycler.MyViewHolder;
+import org.ayo.view.recycler.adapter.AyoViewHolder;
 import org.ayo.view.recycler.SimpleRecyclerAdapter;
 import org.ayo.weibo.model.qa.QaSimple;
 
@@ -20,14 +20,14 @@ public class QaAdapter extends SimpleRecyclerAdapter<QaSimple> {
     }
 
     @Override
-    protected MyViewHolder newView(ViewGroup viewGroup, int viewType) {
+    protected AyoViewHolder newView(ViewGroup viewGroup, int viewType) {
         View v = View.inflate(mContext, R.layout.item_qa, null);
-        MyViewHolder h = new MyViewHolder(v);
+        AyoViewHolder h = new AyoViewHolder(v);
         return h;
     }
 
     @Override
-    protected void bindView(MyViewHolder holder, QaSimple bean, int position) {
+    protected void bindView(AyoViewHolder holder, QaSimple bean, int position) {
 
     }
 }

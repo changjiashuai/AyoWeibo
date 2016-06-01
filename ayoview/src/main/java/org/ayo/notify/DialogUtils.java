@@ -28,7 +28,6 @@ public class DialogUtils {
 
         @Override
         public void onItemClicked(DialogInterface dialog, int which) {
-
         }
 
         @Override

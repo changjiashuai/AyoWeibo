@@ -101,8 +101,15 @@ public class SampleFragment extends Fragment implements ISubPage {
                 //首页，第一次进来会在onCreateView中加载数据，这里不用
                 isFirstCome = false;
             }else{
-                //其他所有情况，都在这里加载
-                loadData();
+                if(isFirstCome){
+                    //非首页，第一次进入，加载数据
+                    isFirstCome = false;
+                    loadData();
+                }else{
+                    //非首页，也不是第一次进来
+                    //这里就得按照业务需求来了
+                }
+
             }
         }
 
@@ -111,7 +118,7 @@ public class SampleFragment extends Fragment implements ISubPage {
     @Override
     public void onPageVisibleChange(boolean isVisible) {
 
-
+        //在这里进行友盟统计
         Log.i("pagegroup", title + "--onPageVisibleChange: " + isVisible);
 
         if(isVisible){

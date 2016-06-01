@@ -49,6 +49,6 @@ dependencies {
     // Because RxAndroid releases are few and far between, it is recommended you also
     // explicitly depend on RxJava's latest version for bug fixes and new features.
 
-
+    compile 'com.flyco.banner:FlycoBanner_Lib:1.1.8@aar'
     //ultra pulltorefresh的demo
 }

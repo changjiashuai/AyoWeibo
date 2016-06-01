@@ -4,12 +4,14 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
+import org.ayo.view.recycler.adapter.AyoViewHolder;
+
 import java.util.List;
 
 /**
  * RecyclerView的adapter封装，封装了通用ViewHolder
  */
-public abstract class SimpleRecyclerAdapter<T> extends RecyclerView.Adapter<MyViewHolder>  {
+public abstract class SimpleRecyclerAdapter<T> extends RecyclerView.Adapter<AyoViewHolder>  {
 
     protected List<T> list;
     protected Context mContext;
@@ -24,8 +26,8 @@ public abstract class SimpleRecyclerAdapter<T> extends RecyclerView.Adapter<MyVi
         this.notifyDataSetChanged();
     }
 
-    protected abstract MyViewHolder newView(ViewGroup viewGroup, int viewType);
-    protected abstract void bindView(MyViewHolder holder, T bean, int position);
+    protected abstract AyoViewHolder newView(ViewGroup viewGroup, int viewType);
+    protected abstract void bindView(AyoViewHolder holder, T bean, int position);
 
 
     /**
@@ -45,12 +47,12 @@ public abstract class SimpleRecyclerAdapter<T> extends RecyclerView.Adapter<MyVi
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AyoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return newView(parent, viewType);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(AyoViewHolder holder, int position) {
         bindView(holder, list.get(position), position);
     }
 

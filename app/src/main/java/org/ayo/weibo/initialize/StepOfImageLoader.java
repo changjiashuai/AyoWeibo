@@ -6,7 +6,6 @@ import org.ayo.weibo.App;
 import org.ayo.weibo.Initializer;
 
 /**
- * Created by Administrator on 2016/4/30.
  */
 public class StepOfImageLoader implements Initializer.Step{
     @Override

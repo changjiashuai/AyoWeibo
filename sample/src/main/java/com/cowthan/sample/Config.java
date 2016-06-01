@@ -17,8 +17,10 @@ import com.ayo.sample.zsdk.ToolkitSampleActivity;
 import com.ayoview.notifysample.DialogDemoActivity;
 import com.ayoview.sample.deepmind.DemoCustomMenuActivity;
 import com.ayoview.sample.drawable.DemoDrawableActivity;
+import com.ayoview.sample.indicator.SimpleHomeActivity;
 import com.ayoview.sample.tmpl_listview.TmplListActivity;
 import com.ayoview.sample.tmpl_pagegroup.DemoMainActivity;
+import com.ayoview.sample.tmpl_recycler_adapter.AdapterDelegateDemo;
 import com.ayoview.sample.tmpl_recyclerview.DemoRecyclerActivity;
 import com.ayoview.sample.ultra.pulltorefresh.UltraDemoActivityAttacher;
 import com.ayoview.sample.zbutton.ButtonDemoActivity;
@@ -104,6 +106,7 @@ public class Config{
                 menuItem3.addLeaf(new Leaf("Button：点击系列", "", ButtonDemoActivity.class));
                 menuItem3.addLeaf(new Leaf("ImageView系列", "", null));
                 menuItem3.addLeaf(new Leaf("ProgressView系列", "", null));
+                menuItem3.addLeaf(new Leaf("Indicator", "", SimpleHomeActivity.class));
                 menuItem3.addLeaf(new Leaf("View Flipper系列", "", null));
                 menuItem3.addLeaf(new Leaf("表单系列", "", null));
                 menuItem3.addLeaf(new Leaf("布局", "", LayoutDemoActivity.class));
@@ -135,6 +138,7 @@ public class Config{
                 menuItem5.addLeaf(new Leaf("Activity和Fragment基类", "", null));
                 menuItem5.addLeaf(new Leaf("ListView和GridView模板", "", TmplListActivity.class));
                 menuItem5.addLeaf(new Leaf("RecyclerView模板", "", DemoRecyclerActivity.class));
+                menuItem5.addLeaf(new Leaf("RecyclerView通用adapter封装", "", AdapterDelegateDemo.class));
                 menuItem5.addLeaf(new Leaf("界面主框架", "", null));
             }
 
